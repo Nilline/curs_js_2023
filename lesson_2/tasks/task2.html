@@ -12,7 +12,8 @@
 
 		// Отримуємо вхідні данні
 		const yearOfBirth = parseInt(prompt('Вкажіть рік народження:', '0'));
-		const THIS_YEAR = 2023;
+		const THIS_YEAR = new Date().getFullYear();
+		console.log(THIS_YEAR);
 
 		// Обчислюємо вік користувача
 		const totalYears = THIS_YEAR - yearOfBirth;
