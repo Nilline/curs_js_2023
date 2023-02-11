@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+		//== Задача №5 ======================================================================================================================================================
+		// Задача 5. Дано кількість секунд, що пройшла від початку доби. Визначити скільки це годин і хвилин.
+
+		// Отримуємо вхідні данні
+		const NumSeconds = parseInt(prompt('Вкажіть кількість секунд:', '0'));
+
+		// Обчислюємо кількість хвилин та годин
+		const numMinutes = NumSeconds / 60;
+		const numHours = NumSeconds / 60 / 60;
+		const restOfSeconds = NumSeconds % 60;
+
+		// Виводимо в HTML результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 5. Дано кількість секунд, що пройшла від початку доби. Визначити скільки це годин і хвилин.</td>
+				</tr>
+				<tr>
+					<td>Початкові значення:</td>
+					<td>Кількість секунд: ${NumSeconds}</td>
+				</tr>
+				<tr>
+					<td>Кількість хвилин</td>
+					<td>${Math.floor(numMinutes)}</td>
+				</tr>
+				<tr>
+					<td>Кількість годин</td>
+					<td>${Math.floor(numHours)}</td>
+				</tr>
+				<tr>
+					<td>Надлишок секунд</td>
+					<td>${restOfSeconds}</td>
+				</tr>
+			</table>
+		`);
+	</script>
+	<title>task 5</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

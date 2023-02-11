@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+		//== Задача №1 ======================================================================================================================================================
+		// Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці
+
+		const a = parseFloat(prompt('Вкажіть змінну a:', '0'));
+		const b = parseFloat(prompt('Вкажіть змінну b:', '0'));
+
+		const summNum = a + b;
+		const summMultiplication = Math.round(a * b * 100) / 100;
+		const summDivision = Math.round(a / b * 100) / 100;
+
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача №1: Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці</td>
+				</tr>
+				<tr>
+					<td>Початкові значення:</td>
+					<td>Константа a: ${a} --- Константа b: ${b}</td>
+				</tr>
+				<tr>
+					<td>сума:</td>
+					<td>${summNum}</td>
+				</tr>
+				<tr>
+					<td>добуток:</td>
+					<td>${summMultiplication}</td>
+				</tr>
+				<tr>
+					<td>частка:</td>
+					<td>${summDivision}</td>
+				</tr>
+			</table>
+		`);
+	</script>
+	<title>task 1</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

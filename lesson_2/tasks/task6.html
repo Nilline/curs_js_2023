@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+		//== Задача №6 ======================================================================================================================================================
+		// Задача 6. З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.
+
+		// Отримуємо вхідні данні
+		const oneProductPrice = parseFloat(prompt('Вкажіть вартість товару №1:', '0')),
+			oneProductValue = parseFloat(prompt('Вкажіть кількість товарів №1:', '0')),
+			secondProductPrice = parseFloat(prompt('Вкажіть вартість товару №2:', '0')),
+			secondProductValue = parseFloat(prompt('Вкажіть кількість товарів №2:', '0')),
+			threeProductPrice = parseFloat(prompt('Вкажіть вартість товару №3:', '0')),
+			threeProductValue = parseFloat(prompt('Вкажіть кількість товарів №3:', '0'));
+
+		// Обчислюємо вартість товарів
+		const totalPriceProductOne = oneProductValue * oneProductPrice,
+			totalPriceProductSecond = secondProductValue * secondProductPrice,
+			totalPriceProductThree = threeProductValue * threeProductPrice,
+			totalProductsSumm = totalPriceProductOne + totalPriceProductSecond + totalPriceProductThree;
+
+
+		// Виводимо в HTML результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 6. З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.</td>
+				</tr>
+				<tr>
+					<td>Вітаємо вас в нашому магазині</td>
+					<td>Будь-ласка не забудьте заплатити за покупки</td>
+				</tr>
+				<tr>
+					<td>Вартість першого товару</td>
+					<td>${totalPriceProductOne.toFixed(2)}</td>
+				</tr>
+				<tr>
+					<td>Вартість другого товару</td>
+					<td>${totalPriceProductSecond.toFixed(2)}</td>
+				</tr>
+				<tr>
+					<td>Вартість третього товару</td>
+					<td>${totalPriceProductThree.toFixed(2)}</td>
+				</tr>
+				<tr>
+					<td>Всього до сплати</td>
+					<td>${totalProductsSumm.toFixed(2)}</td>
+				</tr>
+				<tr>
+					<td>Дякуємо за покупки</td>
+					<td>Приходьте ще!</td>
+				</tr>
+			</table>
+		`);
+	</script>
+	<title>task 6</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

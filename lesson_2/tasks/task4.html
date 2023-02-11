@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+		//== Задача №4 ======================================================================================================================================================
+		// Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.
+
+		// Отримуємо вхідні данні
+		const quantityCentimeter = parseInt(prompt('Вкажіть кількість сантиметрів:', '0'));
+
+		// Обчислюємо довжину в метрах та кілометрах
+		const quantityMeters = quantityCentimeter / 100;
+		const quantityKilometers = quantityMeters / 1000;
+
+		// Виводимо в HTML результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача №4: Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.</td>
+				</tr>
+				<tr>
+					<td>Початкові значення:</td> 
+					<td>Кількість сантиметрів: ${quantityCentimeter}</td>
+				</tr>
+				<tr>
+					<td>Кількість метрів</td>
+					<td>${quantityMeters.toFixed(2)}</td>
+				</tr>
+				<tr>
+					<td>Кількість кілометрів</td>
+					<td>${quantityKilometers.toFixed(2)}</td>
+				</tr>
+			</table>
+		`);
+	</script>
+	<title>task 4</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

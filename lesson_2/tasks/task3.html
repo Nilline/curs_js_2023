@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+		//== Задача №3 ======================================================================================================================================================
+		// Дано вартість одиниці товару і кількість. Знайти загальну вартість та ПДВ (5% від загальної вартості).
+
+		// Отримуємо вхідні данні
+		const priceProduct = parseFloat(prompt('Вкажіть вартість одиниці товару:', '0'));
+		const quantityProduct = parseFloat(prompt('Вкажіть кількість:', '0'));
+		const PERCENT = parseFloat(prompt('Вкажіть процент ПДВ:', '0'));
+
+		// Обчислюємо загальну вартість товарів
+		const totalSummProducts = (quantityProduct * priceProduct).toFixed(2);
+
+		// Віднімаємо ПДВ від загальної вартісті товарів
+		const correctTotalSummProducts = (totalSummProducts / 100 * (100 - PERCENT)).toFixed(2);
+
+		// Виводимо в HTML результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача №3: Дано вартість одиниці товару і кількість. Знайти загальну вартість та ПДВ (5% від загальної вартості).</td>
+				</tr>
+				<tr>
+					<td>Початкові значення:</td>
+					<td>Кількість товарів: ${quantityProduct} --- Сумма однієї одиниці товару: ${priceProduct}</td>
+				</tr>
+				<tr>
+					<td>Загальна вартість</td>
+					<td>${totalSummProducts}</td>
+				</tr>
+				<tr>
+					<td>${PERCENT}% ПДВ</td>
+					<td>${(totalSummProducts - correctTotalSummProducts).toFixed(2)}</td>
+				</tr>
+				<tr>
+					<td>Загальна вартість з вирахуванням ${PERCENT}% ПДВ:</td>
+					<td>${correctTotalSummProducts}</td>
+				</tr>
+			</table>
+		`);
+	</script>
+	<title>task 3</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

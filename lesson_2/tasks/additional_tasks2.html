@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+		//== Задача №2 ======================================================================================================================================================
+		// Задача 2. З клавіатури вводиться розмір заробітної плати та розмір прожиткового мінімуму. Визначити розмір соціальної допомоги (ввжаємо, що заробітна плата є меншою). 
+
+		// Отримуємо вхідні данні
+		const userSalary = parseInt(prompt('Вкажіть заробітню плату:', '0'));;
+		const livingWage = parseInt(prompt('Вкажіть прожитковий мінімум:', '0'));;
+
+		// Проводимо обчислення
+		const socialHelp = livingWage - userSalary;
+
+		// Виводимо в HTML результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 2. З клавіатури вводиться розмір заробітної плати та розмір прожиткового мінімуму. Визначити розмір соціальної допомоги (ввжаємо, що заробітна плата є меншою).</td>
+				</tr>
+				<tr>
+					<td>Початкові значення:</td>
+					<td>Зарплата: ${userSalary} --- Прожитковий мінімум: ${livingWage} </td>
+				</tr>
+				<tr>
+					<td>Розмір соціальної допомоги</td>
+					<td>${socialHelp > 0 ? socialHelp : 0}</td>
+				</tr>
+			</table>
+		`);
+	</script>
+	<title>task 2</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

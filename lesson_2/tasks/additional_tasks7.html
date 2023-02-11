@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+		//== Задача №7 ======================================================================================================================================================
+		// Задача 7. Скласти алгоритм, який обчислює цілу і дробову частину даного числа х. Наприклад: число 23,56  => ціла: 23, дробова: 0,56.
+
+		// Отримуємо вхідні данні
+		const number = parseFloat(prompt('Вкажіть будь яке число:', '0'));
+
+		// Проводимо обчислення
+		const wholePartNumber = Math.floor(number);
+		const fractionalPartNubmer = Math.round((number - wholePartNumber) * 100) / 100;
+
+		// Виводимо в HTML результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 7. Скласти алгоритм, який обчислює цілу і дробову частину даного числа х. Наприклад: число 23,56  => ціла: 23, дробова: 0,56.</td>
+				</tr>
+				<tr>
+					<td>Початкові значення:</td>
+					<td>Число: ${number}</td>
+				</tr>
+				<tr>
+					<td>Ціла частина:</td>
+					<td>${wholePartNumber}</td>
+				</tr>
+				<tr>
+					<td>Дробна частина:</td>
+					<td>${fractionalPartNubmer}</td>
+				</tr>
+			</table>
+		`);
+	</script>
+	<title>task 7</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

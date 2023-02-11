@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+		//== Задача №2 ======================================================================================================================================================
+		// Дано рік народження (дата: 1 січня) та поточний рік. Знайти кількість років.
+
+		// Отримуємо вхідні данні
+		const yearOfBirth = parseInt(prompt('Вкажіть рік народження:', '0'));
+		const THIS_YEAR = 2023;
+
+		// Обчислюємо вік користувача
+		const totalYears = THIS_YEAR - yearOfBirth;
+
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача №2: Дано рік народження (дата: 1 січня) та поточний рік. Знайти кількість років.</td>
+				</tr>
+				<tr>
+					<td>Рік народження:</td>
+					<td>${yearOfBirth}</td>
+				</tr>
+				<tr>
+					<td>Поточний рік:</td>
+					<td>${THIS_YEAR}</td>
+				</tr>
+				<tr>
+					<td>Кількість років:</td>
+					<td>${totalYears}</td>
+				</tr>
+			</table>
+		`);
+	</script>
+	<title>task 2</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

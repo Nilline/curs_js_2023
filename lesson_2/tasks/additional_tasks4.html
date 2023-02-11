@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+		//== Задача №4 ======================================================================================================================================================
+		// Задача 4. З клавіатури вводиться вік дитини. Вивести на екран через скільки років вона буде відвідувати садочок, піде у школу, закінчить школу, вступить і закінчить
+
+		// Отримуємо вхідні данні
+		const ageChild = parseFloat(prompt('Вкажіть вік дитини (до 2 років):', '0')),
+			START_KINDERGARTEN_YEAR = 3, // дивна задача так як наприклад в садочок дитина може піти від 8 місяців до 8 років, тут немає чітких данних тож взято з голови.
+			START_SCHOOL_YEAR = 7,
+			END_SCHOOL_YEAR = 17,
+			START_UNIVERSITY_YEAR = 18,
+			END_UNIVERSITY_YEAR = 22;
+
+		// Проводимо обчислення
+		const kindergarterYear = START_KINDERGARTEN_YEAR - ageChild;
+		const startSchoolYear = START_SCHOOL_YEAR - ageChild;
+		const endSchoolYear = END_SCHOOL_YEAR - ageChild;
+		const startUniversityYear = START_UNIVERSITY_YEAR - ageChild;
+		const endUniversityYear = END_UNIVERSITY_YEAR - ageChild;
+
+		// Виводимо в HTML результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 4. З клавіатури вводиться вік дитини. Вивести на екран через скільки років вона буде відвідувати садочок, піде у школу, закінчить школу, вступить і закінчить</td>
+				</tr>
+				<tr>
+					<td>Початкові значення:</td>
+					<td>Вік динити: ${ageChild}</td>
+				</tr>
+				<tr>
+					<td>Піде в садочок:</td>
+					<td>Через ${kindergarterYear}</td>
+				</tr>
+				<tr>
+					<td>Піде в школу:</td>
+					<td>Через ${startSchoolYear}</td>
+				</tr>
+				<tr>
+					<td>закінчить школу:</td>
+					<td>Через ${endSchoolYear}</td>
+				</tr>
+				<tr>
+					<td>Вступить:</td>
+					<td>Через ${startUniversityYear}</td>
+				</tr>
+				<tr>
+					<td>Закінчить:</td>
+					<td>Через ${endUniversityYear}</td>
+				</tr>
+			</table>
+		`);
+	</script>
+	<title>task 4</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
