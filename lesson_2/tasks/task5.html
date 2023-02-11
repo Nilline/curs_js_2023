@@ -29,15 +29,15 @@
 					<td>Кількість секунд: ${NumSeconds}</td>
 				</tr>
 				<tr>
-					<td>Кількість хвилин</td>
-					<td>${Math.floor(numMinutes)}</td>
-				</tr>
-				<tr>
 					<td>Кількість годин</td>
 					<td>${Math.floor(numHours)}</td>
 				</tr>
 				<tr>
-					<td>Надлишок секунд</td>
+					<td>Кількість хвилин</td>
+					<td>${Math.floor(numMinutes % 60)}</td>
+				</tr>
+				<tr>
+					<td>Cекунд</td>
 					<td>${restOfSeconds}</td>
 				</tr>
 			</table>
