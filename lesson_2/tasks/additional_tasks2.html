@@ -11,11 +11,11 @@
 		// Задача 2. З клавіатури вводиться розмір заробітної плати та розмір прожиткового мінімуму. Визначити розмір соціальної допомоги (ввжаємо, що заробітна плата є меншою). 
 
 		// Отримуємо вхідні данні
-		const userSalary = parseInt(prompt('Вкажіть заробітню плату:', '0'));;
-		const livingWage = parseInt(prompt('Вкажіть прожитковий мінімум:', '0'));;
+		const userSalary = parseFloat(prompt('Вкажіть заробітню плату:', '0'));
+		const livingWage = parseFloat(prompt('Вкажіть прожитковий мінімум:', '0'));
 
 		// Проводимо обчислення
-		const socialHelp = livingWage - userSalary;
+		const socialHelp = (livingWage - userSalary).toFixed(2);
 
 		// Виводимо в HTML результат
 		document.write(`
@@ -25,7 +25,7 @@
 				</tr>
 				<tr>
 					<td>Початкові значення:</td>
-					<td>Зарплата: ${userSalary} --- Прожитковий мінімум: ${livingWage} </td>
+					<td>Зарплата: ${userSalary.toFixed(2)} --- Прожитковий мінімум: ${livingWage} </td>
 				</tr>
 				<tr>
 					<td>Розмір соціальної допомоги</td>
