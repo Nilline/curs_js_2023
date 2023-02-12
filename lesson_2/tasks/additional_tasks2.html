@@ -15,7 +15,7 @@
 		const livingWage = parseFloat(prompt('Вкажіть прожитковий мінімум:', '0'));
 
 		// Проводимо обчислення
-		const socialHelp = (livingWage - userSalary).toFixed(2);
+		const socialHelp = Math.max(0, livingWage - userSalary).toFixed(2);
 
 		// Виводимо в HTML результат
 		document.write(`
@@ -25,11 +25,11 @@
 				</tr>
 				<tr>
 					<td>Початкові значення:</td>
-					<td>Зарплата: ${userSalary.toFixed(2)} --- Прожитковий мінімум: ${livingWage} </td>
+					<td>Зарплата: ${userSalary} --- Прожитковий мінімум: ${livingWage} </td>
 				</tr>
 				<tr>
 					<td>Розмір соціальної допомоги</td>
-					<td>${socialHelp > 0 ? socialHelp : 0}</td>
+					<td>${socialHelp}</td>
 				</tr>
 			</table>
 		`);
