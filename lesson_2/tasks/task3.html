@@ -13,13 +13,13 @@
 		// Отримуємо вхідні данні
 		const priceProduct = parseFloat(prompt('Вкажіть вартість одиниці товару:', '0'));
 		const quantityProduct = parseFloat(prompt('Вкажіть кількість:', '0'));
-		const PERCENT = parseFloat(prompt('Вкажіть процент ПДВ:', '0'));
+		const taxPercent = parseFloat(prompt('Вкажіть процент ПДВ:', '0'));
 
 		// Обчислюємо загальну вартість товарів
 		const totalSummProducts = (quantityProduct * priceProduct).toFixed(2);
 
 		// Віднімаємо ПДВ від загальної вартісті товарів
-		const correctTotalSummProducts = (totalSummProducts / 100 * (100 - PERCENT)).toFixed(2);
+		const correctTotalSummProducts = (totalSummProducts / 100 * (100 - taxPercent)).toFixed(2);
 
 		// Виводимо в HTML результат
 		document.write(`
@@ -36,11 +36,11 @@
 					<td>${totalSummProducts}</td>
 				</tr>
 				<tr>
-					<td>${PERCENT}% ПДВ</td>
+					<td>${taxPercent}% ПДВ</td>
 					<td>${(totalSummProducts - correctTotalSummProducts).toFixed(2)}</td>
 				</tr>
 				<tr>
-					<td>Загальна вартість з вирахуванням ${PERCENT}% ПДВ:</td>
+					<td>Загальна вартість з вирахуванням ${taxPercent}% ПДВ:</td>
 					<td>${correctTotalSummProducts}</td>
 				</tr>
 			</table>
