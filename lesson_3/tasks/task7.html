@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+		//== Задача №7 ======================================================================================================================================================
+		// З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься
+
+		// Отримуємо початкові данні
+		const monthPerYear = 12
+		let numOfMonth = parseInt(prompt('Введіть номер місяця:', '0')) || 0
+		let resultText
+
+		// Проводимо порівняння
+		if (numOfMonth > monthPerYear)
+			numOfMonth = (numOfMonth - 1) % monthPerYear + 1
+
+		if (numOfMonth > 0 && numOfMonth <= 2 || numOfMonth === 12)
+			resultText = "Зима"
+		else if (numOfMonth > 2 && numOfMonth <= 5)
+			resultText = "Весна"
+		else if (numOfMonth > 5 && numOfMonth <= 8)
+			resultText = "Літо"
+		else if (numOfMonth > 8 && numOfMonth <= 11)
+			resultText = "Осінь"
+		else
+			resultText = "Такого місяця немає"
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача №7: З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься</td>
+				</tr>
+				<tr>
+					<td>Початкові значення:</td>
+					<td>Номер місяця = ${numOfMonth}</td>
+				</tr>
+				<tr>
+					<td>Результат:</td>
+					<td>${resultText}</td>
+				</tr>
+			</table>
+		`);
+	</script>
+	<title>task 7</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

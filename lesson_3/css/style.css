@@ -1,0 +1,85 @@
+body {
+	background-color: #1E1B27;
+	color: #fff;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+}
+
+ul li {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+ul li h2 {
+	flex: 1 1 100%;
+	text-align: center;
+}
+
+ul li:not(:last-child) {
+	margin-bottom: 15px;
+}
+
+ul li a {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #fff;
+	padding: 10px 20px;
+	flex: 0 1 50%;
+}
+
+table {
+	width: 75%;
+}
+
+table:not(:last-child) {
+	margin-bottom: 50px;
+}
+
+table tr:first-child {
+	font-size: 30px;
+	font-weight: 700;
+	margin-bottom: 20px;
+	display: block;
+	color: #FF9902;
+
+}
+
+table tr {
+	font-family: sans-serif;
+}
+
+table tr td {
+	display: flex;
+	align-items: center;
+}
+
+table tr:not(:first-child) td {
+	border-bottom: 1px solid #fff;
+	border-right: 1px solid #fff;
+	padding: 5px;
+}
+
+table tr:nth-child(2) {
+	border-top: 1px solid #fff;
+}
+
+table tr:not(:first-child) td:first-child {
+	border-left: 1px solid #fff;
+}
+
+table tr:not(:first-child) {
+	font-size: 22px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	row-gap: 15px;
+}

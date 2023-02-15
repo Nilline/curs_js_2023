@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+		//== Задача №6 ======================================================================================================================================================
+		// З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.
+
+		// Отримуємо початкові данні
+		const daysPerWeek = 7;
+		let numOfWeek = parseInt(prompt('Введіть номер дня тижня:', '0')) || 0
+		let resultText
+
+
+		// Проводимо порівняння
+		if (numOfWeek > daysPerWeek)
+			numOfWeek = (numOfWeek - 1) % daysPerWeek + 1
+
+		switch (numOfWeek) {
+			case 1: resultText = "Понеділок"
+				break;
+			case 2: resultText = "Вівторок"
+				break;
+			case 3: resultText = "Середа"
+				break;
+			case 4: resultText = "Четверг"
+				break;
+			case 5: resultText = "П'ятниця"
+				break;
+			case 6: resultText = "Субота"
+				break;
+			case 7: resultText = "Неділя"
+				break;
+			default: resultText = "Введіть коректні данні"
+		}
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача №6: З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.</td>
+				</tr>
+				<tr>
+					<td>Початкові значення:</td>
+					<td>Номер дня тижня = ${numOfWeek}</td>
+				</tr>
+				<tr>
+					<td>Результат:</td>
+					<td>${resultText}</td>
+				</tr>
+			</table>
+		`);
+	</script>
+	<title>task 6</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+		//== Задача №4 ======================================================================================================================================================
+		// З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).
+
+		// Отримуємо початкові данні
+		const kindergartenAge = 8,
+			schoolAge = 17,
+			studentAge = 22,
+			workerAge = 60,
+			pensionerAge = 130;
+		let userAge = parseInt(prompt('Введіть вік людини:', '0'));
+		let resultText;
+
+		// Проводимо порівняння
+		if (userAge >= 0) {
+			if (userAge < kindergartenAge)
+				resultText = 'дитина у садочку'
+			else if (userAge <= schoolAge && userAge >= kindergartenAge)
+				resultText = 'школяр'
+			else if (userAge <= studentAge && userAge > schoolAge)
+				resultText = 'студент'
+			else if (userAge <= workerAge && userAge > studentAge)
+				resultText = 'працівник'
+			else if (userAge <= pensionerAge && userAge > workerAge)
+				resultText = 'пенсіонер'
+			else if (userAge > pensionerAge)
+				resultText = 'Вам би в книгу рекордів гіннеса записатись'
+		} else {
+			if (isNaN(userAge)) {
+				resultText = 'Ви ввели не вірні данні'
+				userAge = 'Введіть данні ще раз'
+			} else
+				resultText = 'дитина ще не народилась'
+		}
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача №4: З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).</td>
+				</tr>
+				<tr>
+					<td>Початкові значення:</td>
+					<td>Він людини = ${userAge}</td>
+				</tr>
+				<tr>
+					<td>Результат:</td>
+					<td>${resultText}</td>
+				</tr>
+			</table>
+		`);
+	</script>
+	<title>task 4</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+		//== Задача №2 ======================================================================================================================================================
+		// З клавіатури вводиться ціна товару і кількість грошей. Якщо грошей не вистачає то відмовляємо у покупці, інакше, якщо ще залишаються гроші, то пропонуємо купити лотерею за 4 грн.
+
+		// Отримуємо початкові данні
+		const productPrice = parseFloat(prompt('Вверіть ціну товару:', '0 грн'))
+		const amountMoney = parseFloat(prompt('Вверіть кількість грошей в наявності:', '0 грн'))
+		const lotteryPrice = 4
+		let resultText;
+
+		// Проводимо порівняння
+		if (amountMoney >= productPrice + lotteryPrice)
+			resultText = `До сплати ${productPrice} грн. Не бажаєте купити лотерею за ${lotteryPrice} грн?`
+		else if (amountMoney < productPrice)
+			resultText = `Нажаль у вас недостатньо коштів:(`
+		else {
+			if (isNaN(productPrice) || isNaN(amountMoney))
+				resultText = `Будь-ласка введіть коректні данні`
+			else
+				resultText = `До сплати ${productPrice} грн. Гарного дня!`
+		}
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача №2: З клавіатури вводиться ціна товару і кількість грошей. Якщо грошей не вистачає то відмовляємо у покупці, інакше, якщо ще залишаються гроші, то пропонуємо купити лотерею за 4 грн.</td>
+				</tr>
+				<tr>
+					<td>Початкові значення:</td>
+					<td>Ціна товару ${productPrice} грн. <br> Кількість грошей в наявності ${amountMoney} грн.</td>
+				</tr>
+				<tr>
+					<td>Відповідь касира:</td>
+					<td>${resultText}</td>
+				</tr>
+			</table>
+		`);
+	</script>
+	<title>task 2</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
