@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+
+		// Отримуємо початкові данні
+		let userNumber = parseInt(prompt('Загадайте число і я спробую його вгадати:')),
+			numberGuessed = false,
+			computerNumber
+
+		// Використовуємо цикл
+		do {
+			if (isNaN(userNumber)) {
+				alert('Будь ласка введіть число а то мені немає що вгадувати :(')
+				userNumber = parseInt(prompt('Загадайте число і я спробую його вгадати:'))
+				continue
+			}
+			let randomNumber
+			if (userNumber < 0)
+				randomNumber = Math.ceil(Math.random() * (userNumber - 1))
+			else
+				randomNumber = Math.floor(Math.random() * (userNumber + 1))
+
+			const confirmationNumber = confirm(`Це число ${randomNumber}?`);
+
+			if (confirmationNumber && randomNumber === userNumber) {
+				alert('Ура! Я вгадав число!')
+				numberGuessed = true
+				computerNumber = randomNumber
+			} else {
+				if (confirmationNumber) {
+					alert('Не бреши, ти не це число загадав!')
+					continue
+				}
+			}
+		} while (!numberGuessed)
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 9. Користувач загадує число. Комп’ютер задає питання поки не вгадає число користувача (використати confirm).</td>
+				</tr>
+				<tr>
+					<td>Число користувача</td>
+					<td>${userNumber}</td>
+				</tr>
+				<tr>
+					<td>Число компьютера:</td>
+					<td>${computerNumber}</td>
+				</tr>
+			</table>
+		`)
+	</script>
+	<title>task 9</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

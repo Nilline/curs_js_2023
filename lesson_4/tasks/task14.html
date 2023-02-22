@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 14</title>
+	<script>
+
+		// Отримуємо початкові данні
+		const PRODUCT_PRICE = 1000
+		let userAmount = 0
+		let userNotPaid = true
+		let amountForPayment = PRODUCT_PRICE
+
+		// Повідомляємо користувачу яку сумму йому
+		while (userAmount < PRODUCT_PRICE) {
+			if (userNotPaid) {
+				alert(`Вітаємо! Сумма до сплати ${PRODUCT_PRICE} грн, нажаль сьогодні приймаємо тільки готівку.`)
+				userNotPaid = false
+			}
+
+			const userPaid = parseFloat(prompt('Введіль сумму для оплати:', '0.00'))
+			amountForPayment = (PRODUCT_PRICE - userAmount).toFixed(2);
+
+			// Перевірки на коректність введення данних покупцем
+			if (userPaid === 0) {
+				alert(`Ми не даємо товари бескоштовно, будь ласка введіть сумму для оплати. До сплати ${amountForPayment} грн.`)
+				continue
+			}
+			if (userPaid < 0) {
+				alert(`Ми не даємо товари в кредит, будь ласка введіть позитивну сумму для оплати. До сплати ${amountForPayment} грн.`)
+				continue
+			}
+			if (isNaN(userPaid)) {
+				alert(`Ми приймаємо тільки готівку, це можете викинути на смітник. До сплати ${amountForPayment} грн.`)
+				continue
+			}
+
+			// Проводимо обчислення скільки грошей ще залишилось до сплати
+			userAmount += userPaid
+			amountForPayment = (PRODUCT_PRICE - userAmount).toFixed(2)
+
+			alert(`Ваші ${userPaid.toFixed(2)} грн. Залишилось ще ${amountForPayment <= 0 ? 0 : amountForPayment} грн.`)
+
+			if (amountForPayment <= 0)
+				alert(`Ваша решта ${Math.abs(amountForPayment)} грн. Дякуємо за покупку, приходьте ще!`)
+		}
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 14. Каса. Користувачу повідомляють суму, яку йому треба сплатити. Користувач поступово вводить суму грошей до тих пір, поки суми не буде достатньо для оплати товарів (кожного разу користувачу повідомляють, яку ще суму потрібно ввести).</td>
+				</tr>
+				<tr>
+					<td>Вартість товару</td>
+					<td>${PRODUCT_PRICE}</td>
+				</tr>
+				<tr>
+					<td>Покупець заплатив</td>
+					<td>${userAmount.toFixed(2)}</td>
+				</tr>
+				<tr>
+					<td>Решта</td>
+					<td>${Math.abs(amountForPayment).toFixed(2)}</td>
+				</tr>
+			</table>
+		`)
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

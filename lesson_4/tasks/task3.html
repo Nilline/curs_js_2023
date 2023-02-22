@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<style>
+		.task-three-style tr {
+			display: block;
+			margin-top: 10px;
+		}
+
+		.task-three-style tr td {
+			display: table-cell;
+			border: 1px solid #fff;
+			color: #fff;
+			font-weight: normal;
+			padding: 5px;
+		}
+	</style>
+	<title>task 3</title>
+	<script>
+
+		// Початкові данні
+		const QUANTITY_COLUMNS = 7
+
+		// Виводимо похідні данні
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 3. Вивести таблицю з одним рядком і  7 стовпцями.</td>
+				</tr>
+				<tr>
+					<td>Кількість стовпців:</td>
+					<td>${QUANTITY_COLUMNS}</td>
+				</tr>
+			</table>
+		`);
+
+		document.write(`<table class="task-three-style"><tr>`)
+		// Використовуємо цикл
+		for (let i = 1; i <= QUANTITY_COLUMNS; i++) {
+			document.write(`<td>${i}</td>`)
+		}
+		document.write(`</table></tr>`) 
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

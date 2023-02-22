@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 1</title>
+	<script>
+		// Отримуємо початкові данні
+		const quantityRepeat = parseInt(prompt('Кількість пунктів =')),
+			MIN_NUMBER = 1,
+			MAX_NUMBER = 100
+		let templateListItems = '';
+
+		// Використовуємо цикл
+		for (let i = 1; i <= quantityRepeat; i++) {
+			const randomNum = Math.floor(MIN_NUMBER + Math.random() * MAX_NUMBER)
+			templateListItems += `<li>Пункт №${i} з випадковим числом: ${randomNum}</li>`
+		}
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 1. Вивести з використанням циклів маркований список з випадковими числами (1-100). Кількість випадкових чисел вводиться користувачем.</td>
+				</tr>
+				<tr>
+					<td>Кількість виведень</td>
+					<td>${quantityRepeat}</td>
+				</tr>
+				<tr>
+					<td>Мінімальне число</td>
+					<td>${MIN_NUMBER}</td>
+				</tr>
+				<tr>
+					<td>Максимальне число</td>
+					<td>${MAX_NUMBER}</td>
+				</tr>
+				<tr>
+					<td>
+						<ul>
+							${templateListItems}
+						</ul>	
+					</td>
+				</tr>
+			</table>
+		`);
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

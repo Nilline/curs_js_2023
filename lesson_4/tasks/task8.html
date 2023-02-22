@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+
+		// Отримуємо початкові данні
+		let userNumber = parseInt(prompt('Загадайте число і я за 3 спроби спробую вгадати його:')),
+			quantityAttempts = 3,
+			numberGuessed = false,
+			computerNumber
+
+		// Використовуємо цикл
+		do {
+			if (isNaN(userNumber)) {
+				alert('Будь ласка введіть коректне (позитивне) число а то мені немає що вгадувати :(')
+				userNumber = parseInt(prompt('Загадайте число і я за 3 спроби спробую вгадати його:'))
+				continue
+			}
+			let randomNumber
+
+			if (userNumber < 0)
+				randomNumber = Math.ceil(Math.random() * (userNumber - 1))
+			else
+				randomNumber = Math.floor(Math.random() * (userNumber + 1))
+
+			const confirmationNumber = confirm(`Це число ${randomNumber}?`);
+
+			if (confirmationNumber && randomNumber === userNumber) {
+				alert('Ура! Я вгадав число!')
+				numberGuessed = true
+				computerNumber = randomNumber
+			} else {
+				if (confirmationNumber) {
+					alert('Не бреши, ти не це число загадав!')
+					continue
+				} else {
+					quantityAttempts--
+					if (!quantityAttempts) {
+						alert('Нажаль спроби закінчились :( Загадайте ще раз :)')
+						computerNumber = 'Нажаль я не вгадав, хочу ще :)'
+					}
+				}
+			}
+		} while (quantityAttempts && !numberGuessed)
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 8. Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача (використати confirm).</td>
+				</tr>
+				<tr>
+					<td>Число користувача</td>
+					<td>${userNumber}</td>
+				</tr>
+				<tr>
+					<td>Число компьютера:</td>
+					<td>${computerNumber}</td>
+				</tr>
+			</table>
+		`)
+	</script>
+	<title>task 8</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

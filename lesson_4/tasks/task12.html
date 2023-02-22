@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<style>
+		ol {
+			display: flex;
+			column-gap: 5px;
+			width: 315px;
+			margin: 0px auto;
+		}
+
+		ol li {
+			flex: 0 1 33.333%;
+			height: 100px;
+			list-style: none;
+		}
+
+		ol img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	</style>
+	<script>
+
+		// Отримуємо початкові данні
+		const firstPositionIndex = Math.floor(1 + Math.random() * 4),
+			secondPositionIndex = Math.floor(1 + Math.random() * 4),
+			thirdPositionIndex = Math.floor(1 + Math.random() * 4)
+
+		let templateImages = ''
+
+		/* Використовуємо цикл */
+		for (let i = 0; i < 3; i++) {
+			let indexImage
+			switch (i) {
+				case 0:
+					indexImage = firstPositionIndex
+					break
+				case 1:
+					indexImage = secondPositionIndex
+					break
+				case 2:
+					indexImage = thirdPositionIndex
+					break
+			}
+			templateImages += `<li><img src="../img/${indexImage}.png" alt=""></li>`
+		}
+
+		// Знаходимо виграш користувача
+		let winUserAmount = 0
+		if (firstPositionIndex === secondPositionIndex && firstPositionIndex === thirdPositionIndex) {
+			switch (firstPositionIndex) {
+				case 1:
+					winUserAmount = `${100} грн`
+					break
+				case 2:
+					winUserAmount = `${200} грн`
+					break
+				case 3:
+					winUserAmount = `${500} грн`
+					break
+				case 4:
+					winUserAmount = `${1000} грн`
+					break
+			}
+		} else winUserAmount = 'Нажаль ви нічого не виграли, але ви перемога близько!'
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 12. Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як одне з чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три перших зображення 100 грн, три других – 200, три третіх – 500, три четвертих зображення – 1000грн). Використати цикли і switch (для вибору зображення за номером).</td>
+				</tr>
+				<tr>
+					<td>Ваш виграш</td>
+					<td>${winUserAmount}</td>
+				</tr>
+			</table>
+			
+			<ol>
+				${templateImages}
+			</ol>
+		`)
+	</script>
+	<title>task 12</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

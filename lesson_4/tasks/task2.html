@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 2</title>
+	<script>
+
+		// Отримуємо початкові данні
+		const QUANTITY_INPUTS = 10
+		let templateContentForm = ''
+
+		// Використовуємо цикл
+		for (let i = 1; i <= QUANTITY_INPUTS; i++) {
+			templateContentForm += `
+				<label for="c_${i}">Product #${i}</label>
+				<input required id="c_${i}" type="number">
+				`
+			if (i === QUANTITY_INPUTS) templateContentForm += '<button>Send</button>'
+		}
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 2. Створити 10 елементів для введення цін продуктів</td>
+				</tr>
+				<tr>
+					<td>Кількість елементів:</td>
+					<td>${QUANTITY_INPUTS}</td>
+				</tr>
+				<tr>
+					<td>
+						<form action="#" method="GET">
+							${templateContentForm}
+						</form>
+					</td>
+				</tr>
+			</table>
+		`);
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

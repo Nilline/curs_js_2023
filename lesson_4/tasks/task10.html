@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+
+		// Отримуємо початкові данні
+		const userNumberOne = parseInt(prompt('Введіть число 1')),
+			userNumberSecond = parseInt(prompt('Введіть число 2')),
+			minNumber = userNumberOne < userNumberSecond ? userNumberOne : userNumberSecond,
+			maxNumber = userNumberOne > userNumberSecond ? userNumberOne : userNumberSecond
+
+		let counter = minNumber,
+			totalSummNumber = 0
+
+		// Використовуємо цикл
+		while (counter < maxNumber) {
+			if (counter % 2 !== 0 && counter !== minNumber) totalSummNumber += counter
+			counter++
+		}
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 10. Знайти суму всіх непарних чисел, що знаходяться між заданими користувачем числами.</td>
+				</tr>
+				<tr>
+					<td>Мінімальне число користувача</td>
+					<td>${minNumber}</td>
+				</tr>
+				<tr>
+					<td>Максимальне число користувача</td>
+					<td>${maxNumber}</td>
+				</tr>
+				<tr style="margin-top: 20px; border-top: 1px solid #fff;">
+					<td>Сума всіх непарних чисел</td>
+					<td>${totalSummNumber}</td>
+				</tr>
+			</table>
+		`)
+	</script>
+	<title>task 10</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

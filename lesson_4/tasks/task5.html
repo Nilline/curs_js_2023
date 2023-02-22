@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<style>
+		.task-four-style tr,
+		.task-four-style tr:first-child,
+		.task-four-style tr:not(:first-child) {
+			display: block;
+			margin-top: 10px;
+			color: #fff;
+			font-size: inherit;
+			font-weight: normal;
+			margin: 0;
+		}
+
+		.task-four-style tr td {
+			display: table-cell;
+			border: 1px solid #fff;
+			padding: 5px;
+		}
+
+		.task-four-style tr:nth-child(2) {
+			border-top: none;
+		}
+	</style>
+	<title>task 5</title>
+	<script>
+
+		// Початкові данні
+		const QUANTITY_ROW = 3,
+			QUANTITY_NUMBER = 3
+		let counter = 1
+
+		// Виводимо похідні данні
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 5. Вивести таблицю 3 в рядок</td>
+				</tr>
+				<tr>
+					<td>Кількість рядків</td>
+					<td>${QUANTITY_ROW}</td>
+				</tr>
+				<tr>
+					<td>Кількість повторень</td>
+					<td>${QUANTITY_NUMBER}</td>
+				</tr>
+			</table>
+		`);
+
+		document.write('<table class="task-four-style">')
+		// Використовуємо цикли
+		for (let i = 1; i <= QUANTITY_ROW; i++) {
+			document.write('<tr>')
+			for (let j = 1; j <= QUANTITY_NUMBER; j++) {
+				document.write(`<td>${counter}</td>`)
+				counter++
+			}
+			document.write('</tr>')
+		}
+		document.write('</table>')
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

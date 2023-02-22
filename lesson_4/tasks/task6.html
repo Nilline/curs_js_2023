@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<style>
+		.task-five-style {
+			border: 1px solid #fff;
+			padding: 1px;
+			width: auto;
+			display: inline-block;
+		}
+
+		.task-five-style:not(:last-child) {
+			margin: 0 50px 0 0;
+		}
+
+		.task-five-style tr,
+		.task-five-style tr:first-child,
+		.task-five-style tr:not(:first-child) {
+			display: block;
+			margin-top: 10px;
+			color: #fff;
+			font-size: inherit;
+			font-weight: normal;
+			margin: 0;
+		}
+
+		.task-five-style tr td {
+			display: table-cell;
+			border: 1px solid #fff;
+			padding: 5px;
+		}
+
+		.task-five-style tr:nth-child(2) {
+			border-top: none;
+		}
+	</style>
+	<title>task 6</title>
+	<script>
+
+		// Отримуємо початкові данні
+		const QUANTITY_TABLES = 3,
+			QUANTITY_ROW = 3,
+			QUANTITY_NUMBER = 3
+		let counter = 1
+
+		// Виводимо похідні данні
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача №6: Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком.</td>
+				</tr>
+				<tr>
+					<td>Кількість таблиць</td>
+					<td>${QUANTITY_TABLES}</td>
+				</tr>
+				<tr>
+					<td>Кількість рядків</td>
+					<td>${QUANTITY_ROW}</td>
+				</tr>
+				<tr>
+					<td>Кількість повторень в кожному рядку</td>
+					<td>${QUANTITY_NUMBER}</td>
+				</tr>
+			</table>
+		`);
+
+		// Використовуємо цикл
+		for (let i = 0; i < QUANTITY_TABLES; i++) {
+			document.write('<table class="task-five-style">')
+			for (let j = 0; j < QUANTITY_ROW; j++) {
+				document.write('<tr>')
+				for (let k = 0; k < QUANTITY_NUMBER; k++) {
+					document.write(`<td>${counter}</td>`)
+					counter++
+				}
+				document.write('</tr>')
+			}
+			document.write('</table>')
+		}
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

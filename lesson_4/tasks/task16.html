@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<style>
+		.task-sixeen-style tr:first-child {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			font-size: 22px;
+		}
+
+		.task-sixeen-style tr td {
+			border-bottom: 1px solid #fff;
+			border-right: 1px solid #fff;
+			padding: 5px;
+		}
+
+		.task-sixeen-style tr td:nth-child(2n + 1) {
+			border-left: 1px solid #fff;
+		}
+
+		.task-sixeen-style tr:first-child {
+			border-top: 1px solid #fff;
+		}
+	</style>
+	<title>task 16</title>
+	<script>
+		// Отримуємо початкові данні
+		const DAYS_IN_WEEK = 7
+		const quantityWeek = parseInt(prompt('Введіть кількість тижнів'))
+		const quantityQuestions = DAYS_IN_WEEK * quantityWeek
+
+		let totalProfit = 0, weekProfit = 0
+
+		// Виводимо похідні данні
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 16. Користувач поступово вводить прибуток магазину за кожен день протягом N тижнів. Знайти загальну величину прибутку та вивести величину прибутку протягом кожного окремого тижня.</td>
+				</tr>
+				<tr>
+					<td>Кількість тижнів</td>
+					<td>${quantityWeek}</td>
+				</tr>
+				<tr>
+					<td>Загальна кількість днів</td>
+					<td>${quantityQuestions}</td>
+				</tr>
+			</table>
+		`)
+
+		// Використовуємо цикл
+		document.write('<table class="task-sixeen-style"><tr>')
+		for (let i = 1; i <= quantityQuestions;) {
+			const dayProfit = parseFloat(prompt(`Введіль прибуток ${i} дня з ${quantityQuestions}`))
+
+			if (isNaN(dayProfit)) {
+				alert(`Будь ласка введіть коректний прибуток за ${i} день.`)
+			} else {
+				totalProfit += dayProfit
+				weekProfit += dayProfit
+				if (i % DAYS_IN_WEEK === 0) {
+					document.write(`<td>Прибуток ${i / DAYS_IN_WEEK} тижня</td><td>${weekProfit}</td>`)
+					weekProfit = 0
+				}
+				i++
+			}
+		}
+		document.write(`<td>Загальний прибуток</td><td>${totalProfit}</td></table></tr>`)
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

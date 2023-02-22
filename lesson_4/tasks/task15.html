@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+
+		// Отримуємо початкові данні
+		const MONTH_IN_YEAR = 12
+		let totalTemperature = 0
+
+		// Використовуємо цикл
+		for (let i = 1; i <= MONTH_IN_YEAR;) {
+			const temperature = parseFloat(prompt(`Введіть температуру ${i} місяця`))
+			if (isNaN(temperature)) {
+				alert('Введіть коректру температуру')
+			} else {
+				totalTemperature += temperature
+				i++
+			}
+		}
+
+		// проводимо обчислення середньої температури
+		totalTemperature /= MONTH_IN_YEAR
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 15. Користувача поступово вводить показники температури протягом року. Знайти середню температуру.</td>
+				</tr>
+				<tr>
+					<td>Ваша середня температура на протязі року</td>
+					<td>${totalTemperature.toFixed(1)}</td>
+				</tr>
+			</table>
+		`)
+	</script>
+	<title>task 15</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

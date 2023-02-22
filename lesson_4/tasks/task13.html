@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 13</title>
+	<script>
+
+		// Отримуємо початкові данні
+		const lengthCulumns = parseInt(prompt('Введіть необхідну кількість колонок (ось Y)')),
+			lengthRows = parseInt(prompt('Введіть необхідну кількість рядків (ось X)'))
+
+		let quantityShells = parseInt(prompt('Введіть кількість снарядів')),
+			checkWin = false
+
+		// Розташовуємо корабель на полі у випадковому квадраті
+		const randomPositionX = Math.floor(1 + Math.random() * lengthRows)
+		const randomPositionY = Math.floor(1 + Math.random() * lengthCulumns)
+
+		if (quantityShells === 0)
+			alert(`Ви забули взяти з собою снаряди, вам варто повернутись на підзарядку та спробувати ще раз :)`)
+		else if (quantityShells < 0)
+			alert(`У вас що взяли снаряди в кредит?) Введіть будь ласка позитивне число.`)
+
+		// Робимо спроби потопити корабель
+		while (quantityShells > 0 && !checkWin) {
+			console.log(randomPositionX, randomPositionY);
+			const userShellsX = parseInt(prompt(`Введіть клітинку для пострілу по осі X (від 1 до ${lengthRows})`)),
+				userShellsY = parseInt(prompt(`Введіть клітинку для пострілу по осі Y (від 1 до ${lengthCulumns})`))
+			if (isNaN(userShellsX) || isNaN(userShellsY)) {
+				alert('Будь ласка введіть коректні числа')
+				continue
+			}
+			if (userShellsX === randomPositionX && userShellsY === randomPositionY) {
+				alert('Вітаємо! ви потопили ворожий корабель.')
+				quantityShells--
+				checkWin = true
+				break
+			}
+			else {
+				quantityShells--
+				if (quantityShells)
+					alert(`Не попали:( У вас залишилось ${quantityShells} пострілів`)
+				else
+					alert(`Нажаль снаряди закінчились, але ви можете спробувати ще раз :)`)
+			}
+		}
+
+		// Знаходимо виграш користувача
+
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 13. Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M. Маючи К снарядів користувач намагається потопити корабель.</td>
+				</tr>
+				<tr>
+					<td>Кількість колонок</td>
+					<td>${lengthCulumns}</td>
+				</tr>
+				<tr>
+					<td>Кількість рядків</td>
+					<td>${lengthRows}</td>
+				</tr>
+				<tr>
+					<td>Залишилась кількість снарядів</td>
+					<td>${quantityShells}</td>
+				</tr>
+				<tr>
+					<td>Позиція корабля на полі</td>
+					<td>По осі X: ${randomPositionX}<br>По осі Y: ${randomPositionY}</td>
+				</tr>
+			</table>
+		`)
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

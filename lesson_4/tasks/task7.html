@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 7</title>
+	<script>
+
+		// Отримуємо початкові данні
+		const quantityParagraphs = parseInt(prompt('Кількість абзаців?'))
+		let counter = 1,
+			templateParagraphs = ''
+
+		// Проводимо порівняння
+		while (counter <= quantityParagraphs) {
+			templateParagraphs += `<p>Розділ 1, параграф ${counter}</p>`
+			counter++
+		}
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 7. Вивести на екран N абзаців (N вводиться користувачем)</td>
+				</tr>
+				<tr>
+					<td>Кількість параграфів</td>
+					<td>${quantityParagraphs}</td>
+				</tr>
+			</table>
+			<h1>Заголовок 1</h1>
+			${templateParagraphs}
+			<hr>
+		`);
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
