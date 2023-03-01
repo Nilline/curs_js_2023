@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		a {
+			display: inline-block;
+			position: relative;
+		}
+
+		h1 {
+			position: absolute;
+			top: 0;
+			left: 0;
+			color: #000;
+			font-size: 18px;
+			width: 100%;
+			padding: 0 15px;
+		}
+	</style>
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+
+		// данні для функції
+		const imageSrc = '../img/google.jpg'
+		const titleText = 'Тільки сьогодні можете погуглити все що вам заманеться;)'
+		const srcLink = 'https://google.com'
+
+		// Викликаємо функцію createBanner для вивода баннера
+		const banner = createBanner(imageSrc, titleText, srcLink)
+
+		// Виводимо задачу та результат функції в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 9. Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди переходимо при кліку на зображення (тег img повине знаходитись у середині тега a:</td>
+				</tr>
+			</table>
+			${banner}
+		`)
+
+		// Створюємо функцію що формує таблицю
+		function createBanner(imageSrc, titleText = '', srcLink = '#') {
+			const bannerTitle = `<h1>${titleText}</h1>`;
+			const bannerImage = `<img src="${imageSrc}" alt="banner">`;
+			const banner = `<a href="${srcLink}">${bannerImage}${bannerTitle}</a>`;
+
+			return banner
+		}
+
+	</script>
+	<title>task 9</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

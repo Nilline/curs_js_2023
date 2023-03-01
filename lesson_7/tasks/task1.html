@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 1</title>
+	<script>
+		// Отримуємо вхідні данні від користувача
+		const userNumberMonth = parseInt(prompt('Введіть номер місяця від 1 до 12'))
+		// Викликаємо функцію getSeasonYear для пошуку пори року
+		const seasonYear = getSeasonYear(userNumberMonth)
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>
+						Задача 1. Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.
+					</td>
+				</tr>
+				<tr>
+					<td>Номер місяця</td>
+					<td>${userNumberMonth}</td>
+				</tr>
+				<tr>
+					<td>${userNumberMonth} місяць це</td>
+					<td>${seasonYear}</td>
+				</tr>
+			</table>
+		`);
+
+		// Функція повернення пори року
+		function getSeasonYear(monthNum) {
+			let season
+			switch (monthNum) {
+				case 12:
+				case 1:
+				case 2: season = 'Зима'
+					break;
+				case 3:
+				case 4:
+				case 5: season = 'Весна'
+					break;
+				case 6:
+				case 7:
+				case 8: season = 'Літо'
+					break;
+				case 9:
+				case 10:
+				case 11: season = 'Осінь'
+					break;
+				default: season = 'Помилка, такого місяця немає.'
+			}
+			return season
+		}
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

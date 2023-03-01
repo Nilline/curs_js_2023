@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 6</title>
+	<script>
+
+		// Отримуємо вхідні данні від користувача
+		const userCmValue = parseInt(prompt('Введіть кількість сантиметрів'))
+		const userKgValue = parseFloat(prompt('Введіть кількість кілограмів'))
+		const userKmValue = parseFloat(prompt('Введіть кількість кілометрів'))
+
+		// Викликаємо функцію convertCmToInch для переводу сантиметрів в дюйми
+		const inchValue = convertCmToInch(userCmValue)
+		// Викликаємо функцію convertKgToPounds для переводу кілограмів в фунти
+		const poundsValue = convertKgToPounds(userKgValue)
+		// Викликаємо функцію convertKgToPounds для переводу кілограмів в фунти
+		const milesValue = convertKilometerToMile(userKmValue)
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача №6: Створити окремі функції, які переводять: <br>
+					Сантиметри у дюйми;<br>
+					Кілограми у фунти;<br>
+					Кілометри у милі.</td>
+				</tr>
+				<tr>
+					<td>Кількість сантиметрів ${userCmValue}</td>
+					<td>В дюймах це ${inchValue.toFixed(4)}</td>
+				</tr>
+				<tr>
+					<td>Кількість кілограмів ${userKgValue}</td>
+					<td>В фунтах це ${poundsValue.toFixed(4)}</td>
+				</tr>
+				<tr>
+					<td>Кількість кілометрів ${userKmValue}</td>
+					<td>В милях це ${milesValue.toFixed(4)}</td>
+				</tr>
+			</table>
+		`);
+
+		// Створюємо функцію яка переводить сантиметри в дюйми
+		function convertCmToInch(value) {
+			return value * 0.393701
+		}
+
+		// Створюємо функцію яка переводить кілограми в фунти
+		function convertKgToPounds(value) {
+			return value / 0.45359237
+		}
+
+		// Створюємо функцію яка переводить кілометри в милі
+		function convertKilometerToMile(value) {
+			return value * 0.621371
+		}
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

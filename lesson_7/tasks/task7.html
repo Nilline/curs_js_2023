@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<style>
+		.no-style {
+			width: auto;
+			margin: 0 !important;
+			padding: 20px;
+		}
+
+		.no-style td,
+		.no-style tr {
+			color: #fff;
+			font-size: 18px;
+			font-weight: normal;
+		}
+
+		.no-style tr {
+			display: table-row !important;
+			margin: 0 !important;
+			border: none !important;
+		}
+
+		.no-style td {
+			display: table-cell !important;
+			border: 1px solid #fff;
+			padding: 5px !important;
+		}
+	</style>
+	<title>task 7</title>
+	<script>
+
+		// Отримуємо вхідні данні від користувача
+		const rowsTable = parseInt(prompt('Введіть кількість рядків', '1'))
+		const columnsTable = parseInt(prompt('Введіть кількість стовпців', '1'))
+
+		// Виводимо в HTML задачу
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача №7: Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).</td>
+				</tr>
+				<tr>
+					<td>Кількість рядків: ${rowsTable}</td>
+					<td>Кількість стовпців: ${columnsTable}</td>
+				</tr>
+			</table>
+		`);
+
+		// Виводимо таблицю
+		if (rowsTable && columnsTable)
+			createTable(rowsTable, columnsTable)
+
+		// Створюємо функцію що формує таблицю
+		function createTable(rows, columns, message = 'default message') {
+			document.write('<table class="no-style" border=2>')
+			for (let row = 0; row < rows; row++) {
+				document.write('<tr>')
+				for (let column = 0; column < columns; column++) {
+					document.write(`<td>${message}</td>`)
+				}
+				document.write('</tr>')
+			}
+			document.write('</table>')
+		}
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 4</title>
+	<script>
+
+		// Отримуємо вхідні данні від користувача
+		const userNumOne = getUserNumber(1)
+		const userNumTwo = getUserNumber(2)
+		const userNumThree = getUserNumber(3)
+		const userNumFour = getUserNumber(4)
+
+		// Викликаємо функцію calcSumm для обчислення суми
+		const sumNumbers = calcSumm(userNumOne, userNumTwo, userNumThree, userNumFour)
+		// Викликаємо функцію calcMultiply для обчислення суми
+		const multiplyNumbers = calcMultiply(userNumOne, userNumTwo, userNumThree, userNumFour)
+		// Викликаємо функцію getArithmeticMean для знаходження середнього арифметичного
+		const arithmeticMeanNumber = getArithmeticMean(userNumOne, userNumTwo, userNumThree, userNumFour)
+		// Викликаємо функцію getMin для знаходження мінімального числа
+		const minNum = getMin(userNumOne, userNumTwo, userNumThree, userNumFour)
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 4. Створити окремі функції, які для 4 чисел знаходять: <br>
+					1)суму;<br>
+					2)добуток;<br>
+					3)середнє арифметичне;<br>
+					4)мінімальне значення.</td>
+				</tr>
+				<tr>
+					<td>Числа користувача</td>
+					<td>a: ${userNumOne}<br> b: ${userNumTwo}<br> c: ${userNumThree}<br> d: ${userNumFour}</td>
+				</tr>
+				<tr>
+					<td>Сума</td>
+					<td>${userNumOne} + ${userNumTwo} + ${userNumThree} + ${userNumFour} = ${sumNumbers}</td>
+				</tr>
+				<tr>
+					<td>Добуток</td>
+					<td>${userNumOne} * ${userNumTwo} * ${userNumThree} * ${userNumFour} = ${multiplyNumbers}</td>
+				</tr>
+				<tr>
+					<td>Cереднє арифметичне</td>
+					<td>(${userNumOne} + ${userNumTwo} + ${userNumThree} + ${userNumFour}) / 4 = ${arithmeticMeanNumber}</td>
+				</tr>
+				<tr>
+					<td>Мінімальне значення</td>
+					<td>${userNumOne} | ${userNumTwo} | ${userNumThree} | ${userNumFour} = ${minNum}</td>
+				</tr>
+			</table>
+		`);
+
+		// Створюємо функцію для prompt
+		function getUserNumber(num) {
+			return parseFloat(prompt(`Введіть цифру №${num}`))
+		}
+
+		// Створюємо функцію для обчислення суми
+		function calcSumm(a, b, c, d) {
+			return a + b + c + d
+		}
+
+		// Створюємо функцію для обчислення добутку
+		function calcMultiply(a, b, c, d) {
+			return a * b * c * d
+		}
+
+		// Створюємо функцію для знаходження середнього арифметичного
+		function getArithmeticMean(a, b, c, d) {
+			return calcSumm(a, b, c, d) / 4
+		}
+
+		// Створюємо функцію для знаходження мінімального значення.
+		function getMin(...args) {
+			let min = args[0]
+			for (let i = 1; i < args.length; i++)
+				if (args[i] < min)
+					min = args[i]
+			return min
+		}
+
+		// Це так про всяк випадок)
+		/*
+		function getMin(a, b, c, d) {
+			let min = a;
+			if (b < min) {
+				min = b;
+			}
+			if (c < min) {
+				min = c;
+			}
+			if (d < min) {
+				min = d;
+			}
+			return min;
+		}
+		*/
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

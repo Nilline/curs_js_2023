@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 5</title>
+	<script>
+
+		// Отримуємо вхідні данні від користувача
+		const userNumOne = getUserNumber(1)
+		const userNumTwo = getUserNumber(2)
+		const userNumThree = getUserNumber(3)
+
+		// Викликаємо функцію GetСountEvenPositiveGreaterThan100 для знаходження кількості парних, додатних, більших за 100.
+		const result = GetСountEvenPositiveGreaterThan100(userNumOne, userNumTwo, userNumThree)
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 5. Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більших за 100.</td>
+				</tr>
+				<tr>
+					<td>Цифри користувача</td>
+					<td>a: ${userNumOne}<br> b: ${userNumTwo}<br> c: ${userNumThree}</td>
+				</tr>
+				<tr>
+					<td>Результат</td>
+					<td>${result}</td>
+				</tr>
+			</table>
+		`);
+
+		// Створюємо функцію для prompt
+		function getUserNumber(num) {
+			return parseFloat(prompt(`Введіть цифру №${num}`))
+		}
+
+		// Створюємо функцію для знаходження кількості парних, додатних, більших за 100
+		function GetСountEvenPositiveGreaterThan100(a, b, c) {
+			let even = 0, positive = 0, greaterThan100 = 0
+
+			if (a % 2 === 0) even++
+			if (b % 2 === 0) even++
+			if (c % 2 === 0) even++
+
+			if (a > 0) positive++
+			if (b > 0) positive++
+			if (c > 0) positive++
+
+			if (a > 100) greaterThan100++
+			if (b > 100) greaterThan100++
+			if (c > 100) greaterThan100++
+
+			return `Кількість парних: ${even} <br> кількість додатних: ${positive} <br> кількість більших за 100: ${greaterThan100}`
+		}
+
+		// Такий підхід взагалі має місце буде чи краще не видумувати?
+		/*
+		function GetСountEvenPositiveGreaterThan100(...args) {
+			let even = 0, positive = 0, greaterThan100 = 0
+
+			for (let i = 0; i < args.length; i++) {
+				const num = args[i]
+				if (num % 2 === 0) even++
+				if (num > 0) positive++
+				if (num > 100) greaterThan100++
+			}
+
+			return `Кількість парних: ${even} <br> кількість додатних: ${positive} <br> кількість більших за 100: ${greaterThan100}`
+		}
+		*/
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

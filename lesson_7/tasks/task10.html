@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+
+		// Отримуємо початкові данні (скільки є показів температур)
+		const userQuantityTemperatures = parseInt(prompt('Введіть скільки у вас є показів температур = ', '1'))
+
+		// Змінна для збереження кількості відємних температур
+		let quantityNegativeTemperatures = 0
+
+		// Використовуємо цикл який вводить температури
+		for (let i = 1; i <= userQuantityTemperatures; i++)
+			getUserNumber(i)
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 10. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість від’ємних показів температури.</td>
+				</tr>
+				<tr>
+					<td>Кількість відємних температур</td>
+					<td>${quantityNegativeTemperatures}</td>
+				</tr>
+			</table>
+		`)
+
+		// Створюємо функцію для prompt Яка буде питати яка температура та викликати функцію для перевірки
+		function getUserNumber(num) {
+			const temperature = parseFloat(prompt(`Введіть показ температури №${num}`))
+			getNegativeTemperatures(temperature)
+		}
+
+		// Створюємо функцію яка буде рахувати скільки є відємних показників температур
+		function getNegativeTemperatures(temp) {
+			if (temp < 0) quantityNegativeTemperatures++
+		}
+
+	</script>
+	<title>task 10</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

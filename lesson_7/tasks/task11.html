@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+
+		// Отримуємо початкові данні (скільки є показів температур)
+		const userQuantityTemperatures = parseInt(prompt('Введіть скільки у вас є показів температур = '))
+
+		// Питаємо у користувача температури та зберігаємо результат у змінну
+		const positiveTemp = getAvgPositiveTemp(userQuantityTemperatures)
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 11. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє значення для додатних показів температури.</td>
+				</tr>
+				<tr>
+					<td>Середнє значення позитивних температур</td>
+					<td>${positiveTemp.toFixed(1)}</td>
+				</tr>
+			</table>
+		`)
+
+		// Створюємо функцію для prompt Яка буде питати яка температура та обчислить середнє значення позитивних температур
+		function getAvgPositiveTemp(numRepeat) {
+			let totalTemperature = 0, counterPositiveTemperature = 0
+
+			for (let i = 1; i <= numRepeat; i++) {
+				const temperature = parseFloat(prompt(`Введіть показ температури №${i}`))
+				if (temperature <= 0 || isNaN(temperature)) continue
+
+				totalTemperature += temperature
+				counterPositiveTemperature++
+			}
+
+			return totalTemperature / counterPositiveTemperature
+		}
+
+	</script>
+	<title>task 11</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

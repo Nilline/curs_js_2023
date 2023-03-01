@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 3</title>
+	<script>
+
+		// Отримуємо вхідні данні від користувача
+		const userNumberDay = parseInt(prompt('Введіть номер дня неділі від 1 до 7'))
+		// Викликаємо функцію getDayStatus для пошуку відповіді чи робочий день чи ні
+		const dayStatus = getDayStatus(userNumberDay)
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 3. Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.</td>
+				</tr>
+				<tr>
+					<td>Номер місяця</td>
+					<td>${userNumberDay}</td>
+				</tr>
+				<tr>
+					<td>${userNumberDay} день є</td>
+					<td>${dayStatus}</td>
+				</tr>
+			</table>
+		`);
+
+		// Функція повернення відповіді на роботу сьогодні чи ні)
+		function getDayStatus(dayNum) {
+			if (dayNum % 7 !== 0 && dayNum % 7 !== 6)
+				return 'Робочий'
+			else
+				return 'Вихідний'
+		}
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
