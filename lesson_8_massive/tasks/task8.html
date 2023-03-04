@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+
+		// Похідні дані про мінімальну та максимальну суму виграшу, довжину масиву
+		const MIN_WIN_SUM = -500
+		const MAX_WIN_SUM = 500
+		const LENHTH_MASSIVE = parseInt(prompt('Введіть кількість елементів для гри', '20'))
+
+		// Одновимірний масив, у якому зберігається певна виграшна сума
+		const winSumArray = []
+
+		// Сумарний виграш користувача
+		let totalUserWinning = 0, textUserWinning = ''
+
+		// Змінна для збереження введеного номера користувача для подальшої перевірки в do while
+		let chosenElementNumber
+
+		// Запомняємо масив winSumArray виграшними сумами
+		fillWinningsArrayWithRandomNumbers(LENHTH_MASSIVE, MIN_WIN_SUM, MAX_WIN_SUM, winSumArray)
+
+		// Заповняємо масив winSumArray випадковими числами з виграшами
+		function fillWinningsArrayWithRandomNumbers(quantityElements, minSum, maxSum, arrWinning) {
+			for (let i = 0; i < quantityElements; i++) {
+				const randomPayment = Math.floor(minSum + Math.random() * (maxSum - minSum + 1))
+				arrWinning.push(randomPayment)
+			}
+		}
+
+		// Обчислюємо виграш користувача
+		function calcUserWinning(num, arr) {
+			for (let i = 0; i < arr.length; i++)
+				if (i === num - 1) {
+					const newWinningSum = totalUserWinning + arr[i]
+					textUserWinning += getUserWinsSequence(i, arr, totalUserWinning, newWinningSum)
+					totalUserWinning += arr[i]
+					break;
+				}
+		}
+
+		function getUserWinsSequence(currentUserNum, arr, lastWinning, newWinning) {
+			return `
+			Ви обрали номер ${currentUserNum} що містить виграш в розмірі ${arr[currentUserNum]},<br>
+			ваш минулий виграш складав ${lastWinning},<br>
+			зараз ваш виграш складає ${newWinning}<br><br>
+			`
+		}
+
+		// Використовуємо цикл питаючи користувача номера для подальшої гри (додаткові перевірки не робив так як просили цього не робити)
+		do {
+			chosenElementNumber = parseInt(prompt(`Введіть номер від 1 до ${winSumArray.length}. Якщо бажаєте забрати свій виграш натисніть "Відміна"`))
+			calcUserWinning(chosenElementNumber, winSumArray)
+		} while (!isNaN(chosenElementNumber))
+
+		// Виводимо результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 8. Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим чином значеннями від -500 до 500). Надаючи користувачу
+					можливість вибирати номери елементів (поки він не відмовиться). Знаходити сумарний виграш.</td>
+				</tr>
+				<tr>
+					<td>Послідовність виграшів користувача</td>
+					<td>${textUserWinning}</td>
+				</tr>
+				<tr>
+					<td>Ваш виграш</td>
+					<td>${totalUserWinning}</td>
+				</tr>
+			</table>
+		`)
+	</script>
+	<title>task 8</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

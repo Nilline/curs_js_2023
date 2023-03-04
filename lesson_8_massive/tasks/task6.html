@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 6</title>
+	<script>
+
+		// Отримуємо вхідні данні від користувача (кількість товарів, бюджет)
+		const productsQuantity = parseInt(prompt('Введіть кількість товарів в магазині: ', '4'))
+		// const userBudget = parseFloat(prompt('Введите свой бюджет:'));
+		const userBudget = parseFloat(prompt('Введіть кількість грошей в наявності: ', '300'))
+		// Похідні масиви з назвами товарів та цінами
+		const productsTitles = [], productsPrices = []
+		// Запомняємо масиви productsTitles назвами та productsPrices цінами
+		const productsArray = fillArraysWithGoods(productsTitles, productsPrices)
+		// Формуэмо масив з товарами які може собі дозволити user
+		const sortProductsArray = sortProductsByUserBudget(productsTitles, productsPrices, userBudget)
+
+		function fillArraysWithGoods(titlesArr, pricesArr) {
+			for (let product = 1; product <= productsQuantity; product++) {
+				const title = prompt(`Введіть назву товару № ${product}`, `cheese${product}`)
+				const price = parseFloat(prompt(`Введіть ціну товару для ${title}`, `${49 + product}`)) // 49 + index + index зроблено навмисно щоб не було однакових цін за заммовчанням (зозумію що так робити не варто)
+				titlesArr.push(title)
+				pricesArr.push(price)
+			}
+			return [titlesArr, pricesArr]
+		}
+
+		function sortProductsByUserBudget(titlesArr, pricesArr, userBudget) {
+			const sortProductsTitles = [], sortProductsPrices = []
+			for (let i = 0; i < pricesArr.length; i++) {
+				if (pricesArr[i] <= userBudget) {
+					sortProductsTitles.push(titlesArr[i])
+					sortProductsPrices.push(pricesArr[i])
+				}
+			}
+			return [sortProductsTitles, sortProductsPrices]
+		}
+
+		// Формуэмо строку з назв і цін для вивода в html
+		function outputInformationToHTML(titlesArr, pricesArr) {
+			let tempStr = ''
+			for (let i = 0; i < titlesArr.length; i++) {
+				tempStr += `Назва: ${titlesArr[i]} --- Ціна: ${pricesArr[i]}<br>`
+			}
+			return tempStr
+		}
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача №6: Дано послідовність цін товарів та назв (у окремих масивах). Вивести на екран ті, які може собі дозволити користувач (кількість грошей задається).
+					Приклад збереження даних <br>
+					let productsPrices = [1000, 20, 31] <br>
+					let productsTitles = [‘cheese’, ‘juice’, ‘bread’]</td>
+				</tr>
+				<tr>
+					<td>Бюджет користувача</td>
+					<td>${userBudget}</td>
+				</tr>
+				<tr>
+					<td>Всі товари які є в нашому магазині</td>
+					<td>${outputInformationToHTML(...productsArray)}</td>
+				</tr>
+				<tr>
+					<td>Товари які може купити користувач</td>
+					<td>${outputInformationToHTML(...sortProductsArray)}</td>
+				</tr>
+			</table>
+		`);
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

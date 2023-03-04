@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 4</title>
+	<script>
+
+		// Похідний список номерів у вигляді масиву
+		const arrayLicensePlates = [
+			"LRW213L",
+			"KGN987K",
+			"APT8746",
+			"ZKU4XD",
+			"SZP3685",
+			"DJA285S",
+			"AFK5",
+			"CAZ88",
+			"CKC1AE",
+			"ADF7"
+		]
+
+		// Так як по умові задачі потрібно або вводити імена вручну або генерувати автоматично створюю окремий массив з випадкових імен
+		const randomLicensePlatesArray = fillRandomLicensePlatesArray(arrayLicensePlates)
+		// Константа з результатом кількості повторень номерів з літерою «А» на початку
+		const quantityNumbersStartingWithA = calcNumbersStartingWithA('a', randomLicensePlatesArray)
+		// Константа з результатом кількості повторень номерів де співпадають перша та остання літери
+		const quantitySameFirstAndLastLetter = calcSameFirstAndLastLetter(randomLicensePlatesArray)
+		// Константа з результатом кількості повторень номерів де довжина більше ніж 5 символів
+		const quantityMoreThan5Сharacters = calcMoreThan5Сharacters(randomLicensePlatesArray)
+
+		// функція заповнення масиву randomNames випадковими іменами
+		function fillRandomLicensePlatesArray(LicensePlates) {
+			const tempArr = []
+			for (let name = 0; name < LicensePlates.length; name++) {
+				const randomLicensePlateIndex = Math.floor(1 + Math.random() * LicensePlates.length - 1)
+				tempArr.push(LicensePlates[randomLicensePlateIndex])
+			}
+			return tempArr
+		}
+
+		// Перебираємо масив та шукаємо номери які починаються на букву «А»
+		function calcNumbersStartingWithA(letter, arr) {
+			let counterStartA = 0
+			for (let i = 0; i < arr.length; i++)
+				if (arr[i][0].toUpperCase() === letter.toUpperCase())
+					counterStartA++
+			return counterStartA
+		}
+
+		// Перебираємо масив та шукаємо номери де співпадають перша та остання літери
+		function calcSameFirstAndLastLetter(arr) {
+			let counterDuplecate = 0
+			for (let i = 0; i < arr.length; i++) {
+				const firstLetter = arr[i][0]
+				const lastLetter = arr[i][arr[i].length - 1]
+				if (firstLetter.toUpperCase() === lastLetter.toUpperCase())
+					counterDuplecate++
+			}
+			return counterDuplecate
+		}
+
+		// Перебираємо масив та шукаємо номери які складаються біотге ніж з 5 символів
+		function calcMoreThan5Сharacters(arr) {
+			let counter = 0
+			for (let i = 0; i < arr.length; i++)
+				if (arr[i].length > 5)
+					counter++
+			return counter
+		}
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 4. Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які : <br>
+					• починаються на букву «А»; <br>
+					• перша і остання літери співпадають; <br>
+					• складаються з більше ніш 5 символів;</td>
+				</tr>
+				<tr>
+					<td>Номера автомобілів ${randomLicensePlatesArray.length} штук</td>
+					<td>${randomLicensePlatesArray.join(', ')}</td>
+				</tr>
+				<tr>
+					<td>починаються на букву «А»</td>
+					<td>${quantityNumbersStartingWithA}</td>
+				</tr>
+				<tr>
+					<td>перша і остання літери співпадають;</td>
+					<td>${quantitySameFirstAndLastLetter}</td>
+				</tr>
+				<tr>
+					<td>складаються з більше ніш 5 символів;</td>
+					<td>${quantityMoreThan5Сharacters}</td>
+				</tr>
+			</table>
+		`)
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

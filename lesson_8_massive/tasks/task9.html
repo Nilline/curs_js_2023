@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+
+		// Питаємо користувача яка кількість клітинок ігрового поля
+		const cellsCount = parseInt(prompt('Введіть кількість клітинок в ігровому полі', '5'))
+		// Питаємо користувача яка кількість крраблів на ігровому полі
+		const singleShipsCount = parseInt(prompt('Введіть кількість кораблів на ігровому полі', '2'))
+
+		// Масив з інформацією про ігрове поле
+		const gameBoarsArray = new Array(cellsCount).fill(0)
+
+		// Запускаємо гру та збегігаємо результат гри у виді масиву для подальшого виводу на екран користувача
+		const resultInfoGame = placeShipsOnBoard(singleShipsCount, gameBoarsArray)
+
+		// Заповняємо масив та розмізуємо кораблі на ігровому полі
+		function placeShipsOnBoard(quantityShips, gameArr) {
+			// Копіюємо кількість кораблів на полі для подальшогї передачі у функцію userShoot щоб не використовувати глобальні змінні так як на момент передачі аргумент функції quantityShips дорівнює 0
+			const tempCountShips = quantityShips
+			for (let i = 0; i < gameArr.length && quantityShips > 0; i++) {
+				const randomPositionShip = Math.floor(Math.random() * gameArr.length)
+				if (gameArr[randomPositionShip] === 1) {
+					i--
+					continue
+				}
+				gameArr[randomPositionShip] = 1
+				quantityShips--
+			}
+			return userShoot(tempCountShips, gameArr)
+		}
+
+
+		function userShoot(quantityShips, gameArr) {
+			let quantityUserShots = 0,
+				textUserInfo = ''
+
+			do {
+				const indexUserShoot = parseInt(prompt(`Введіть номер клітинки для пострілу від 1 до ${gameArr.length}`))
+
+				if (gameArr[indexUserShoot - 1] === 1) {
+					gameArr[indexUserShoot - 1] = 0
+					quantityShips--
+					quantityUserShots++
+					textUserInfo += `Вітаємо! Ви потопили корабель який знаходився в клітинці № ${indexUserShoot}<br><br>`
+				} else if (isNaN(indexUserShoot)) {
+					textUserInfo += `Ви вийшли з гри, але не потопили ще ${quantityShips} кораблів. Повертайтесь ще!`
+					quantityShips = 0
+				} else {
+					textUserInfo += `Промах! Ви вистрелили в клітинку № ${indexUserShoot} але там нічого не було<br><br>`
+					quantityUserShots++
+				}
+			} while (quantityShips > 0)
+
+			return [quantityUserShots, textUserInfo]
+		}
+
+		// Виводимо задачу та результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 9. Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних кораблів. Комп’ютер довільно розміщує ці одиночні кораблі у масиві
+					по один у клітинці (якщо у клітинці 0, то клітинка пуста, якщо 1 – то це означає, що там є корабель. Користувач вводить номер клітинки, куди стріляє. Гра
+					продовжується до тих пір, поки не будуть потоплені усі кораблі.</td>
+				</tr>
+				<tr>
+					<td>Кількість клітинок в ігровому полі</td>	
+					<td>${cellsCount}</td>	
+				</tr>
+				<tr>
+					<td>Кількість кораблів</td>	
+					<td>${singleShipsCount}</td>	
+				</tr>
+				<tr>
+					<td>Кількість пострілів</td>	
+					<td>${resultInfoGame[0]}</td>	
+				</tr>
+				<tr>
+					<td>Етапи гри</td>	
+					<td>${resultInfoGame[1]}</td>	
+				</tr>
+			</table>
+		`)
+	</script>
+	<title>task 9</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

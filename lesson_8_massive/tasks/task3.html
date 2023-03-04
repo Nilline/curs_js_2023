@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 3</title>
+	<script>
+
+		// Похідний масив з іменами
+		const names = [
+			"іван",
+			"Марія",
+			"Петро",
+			"Іванна",
+			"Іван",
+			"Олександр",
+			"Іван",
+			"Наталія",
+			"Ірина",
+			"Олена",
+			"іван",
+			"Сергій",
+			"Юлія",
+			"Дмитро",
+			"Іван",
+			"Віталій",
+			"Олексій",
+			"Оксана",
+			"Андрій",
+			"Іван",
+			"іван"
+		];
+		// Так як по умові задачі потрібно або вводити імена вручну або генерувати автоматично створюю окремий массив з випадкових імен
+		const randomNames = fillRandomNamesArray(names)
+		// Константа з текстом для пошуку в масиві
+		const findName = 'Іван'
+		// Константа з результатом кількості повторень ім'я всередині масиву
+		const repeatDuplicateName = getFindDuplicateNames(findName, randomNames)
+
+		// функція заповнення масиву randomNames випадковими іменами
+		function fillRandomNamesArray(namesArray) {
+			const tempArr = []
+			for (let name = 0; name < namesArray.length; name++) {
+				const randomNameIndex = Math.floor(1 + Math.random() * namesArray.length - 1)
+				tempArr.push(names[randomNameIndex])
+			}
+			return tempArr
+		}
+
+		// Перебираємо масив та шукаємо повторення імен
+		function getFindDuplicateNames(name, arr) {
+			let counterRepeatName = 0
+			for (let i = 0; i < arr.length; i++)
+				if (name.toLowerCase() === arr[i].toLowerCase()) // На мій погляд вірний підхід при порівнянні рядків приводити все до одного регістру так як js чутливий до такого
+					counterRepeatName++
+			return counterRepeatName
+		}
+
+		// Виводимо в HTML задачу та результат (Інакше не вміщався цей масив так як немає пробілів тому довелось використати перетворення у string і додати пробіли)
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 3. Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».</td>
+				</tr>
+				<tr>
+					<td>Всі імена</td>
+					<td>${randomNames.join(', ')}</td>
+				</tr>
+				<tr>
+					<td>Ім'я "${findName}" повторюється</td>
+					<td>${repeatDuplicateName} раз</td>
+				</tr>
+			</table>
+		`)
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 1</title>
+	<script>
+		// Дано масив, який містить оцінки з К предметів
+		const quantityUserItems = parseInt(prompt('Яка кількість предметів?'))
+		// Масив о оцінками
+		const assessmentsArray = []
+		// Запускаємо програму
+		getSubjectGrades(quantityUserItems)
+		// Зберігаємо середню оцінку для подальгого використання у функції та виведення в HTML
+		const averageScore = getAverageScore(assessmentsArray)
+
+		// Так як по умаві задачі "Дано масив, який містить оцінки" то запомняємо массив випадковими оцінками
+		function getSubjectGrades(quantityItems) {
+			for (let i = 1; i <= quantityItems; i++) {
+				const grade = 2 + Math.floor(Math.random() * (12 - 2 + 1))
+				assessmentsArray.push(grade)
+			}
+		}
+
+		// Функція знаходження середньої оцінки
+		function getAverageScore(assessmentsArray) {
+			let sumEvaliations = 0
+			for (let grade = 0; grade < assessmentsArray.length; grade++) {
+				sumEvaliations += assessmentsArray[grade]
+			}
+			return sumEvaliations / assessmentsArray.length
+		}
+
+		// Функція перевірки чи є у учня хоча б одна двійка
+		function hasScoreTwo(assessmentsArray) {
+			for (let grade = 0; grade < assessmentsArray.length; grade++) {
+				if (assessmentsArray[grade] === 2) return true
+			}
+			return false
+		}
+
+		// Функція перевірки чи є у учня хоча б одна трійка
+		function hasScoreThree(assessmentsArray) {
+			for (let grade = 0; grade < assessmentsArray.length; grade++) {
+				if (assessmentsArray[grade] === 3) return true
+			}
+			return false
+		}
+
+		// Функція присвоєння категорії до якої відноситься учень
+		function getAverageCategory(assessmentsArray, averageScore) {
+			let resultAssessment
+
+			if (hasScoreTwo(assessmentsArray))
+				resultAssessment = 'двійочник'
+			else if (hasScoreThree(assessmentsArray))
+				resultAssessment = 'трійочник'
+			else if (averageScore < 10)
+				resultAssessment = 'Хорошист'
+			else
+				resultAssessment = 'Відмінник'
+
+			return resultAssessment
+		}
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>
+						Задача 1. Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він відноситься.<br>
+						• відмінник, двійочник (має хоча би одну двійку)<br>
+						• хорошист (оцінки добре і відмінно)<br>
+						• трійочник(є хоча би одна трійка).
+					</td>
+				</tr>
+				<tr>
+					<td>Оцінки учня</td>
+					<td>${assessmentsArray}</td>
+				</tr>
+				<tr>
+					<td>Середній бал</td>
+					<td>${averageScore.toFixed(2)}</td>
+				</tr>
+				<tr>
+					<td>Результат тестування</td>
+					<td>${getAverageCategory(assessmentsArray, averageScore)}</td>
+				</tr>
+			</table>
+		`)
+
+		// Функція повернення пори року
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
