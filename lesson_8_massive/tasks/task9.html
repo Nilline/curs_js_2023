@@ -16,25 +16,21 @@
 		// Масив з інформацією про ігрове поле
 		const gameBoarsArray = new Array(cellsCount).fill(0)
 
+		// Заповняємо масив кораблями
+		placeShipsOnBoard(singleShipsCount, gameBoarsArray)
 		// Запускаємо гру та збегігаємо результат гри у виді масиву для подальшого виводу на екран користувача
-		const resultInfoGame = placeShipsOnBoard(singleShipsCount, gameBoarsArray)
+		const resultInfoGame = userShoot(singleShipsCount, gameBoarsArray)
 
-		// Заповняємо масив та розмізуємо кораблі на ігровому полі
+		// Заповняємо масив та розміщуємо кораблі на ігровому полі
 		function placeShipsOnBoard(quantityShips, gameArr) {
-			// Копіюємо кількість кораблів на полі для подальшогї передачі у функцію userShoot щоб не використовувати глобальні змінні так як на момент передачі аргумент функції quantityShips дорівнює 0
-			const tempCountShips = quantityShips
-			for (let i = 0; i < gameArr.length && quantityShips > 0; i++) {
-				const randomPositionShip = Math.floor(Math.random() * gameArr.length)
-				if (gameArr[randomPositionShip] === 1) {
-					i--
-					continue
-				}
+			for (let i = 0; i < quantityShips; i++) {
+				let randomPositionShip
+				do
+					randomPositionShip = Math.floor(Math.random() * gameArr.length)
+				while (gameArr[randomPositionShip] === 1)
 				gameArr[randomPositionShip] = 1
-				quantityShips--
 			}
-			return userShoot(tempCountShips, gameArr)
 		}
-
 
 		function userShoot(quantityShips, gameArr) {
 			let quantityUserShots = 0,

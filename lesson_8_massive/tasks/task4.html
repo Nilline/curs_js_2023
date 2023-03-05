@@ -26,7 +26,7 @@
 		// Так як по умові задачі потрібно або вводити імена вручну або генерувати автоматично створюю окремий массив з випадкових імен
 		const randomLicensePlatesArray = fillRandomLicensePlatesArray(arrayLicensePlates)
 		// Константа з результатом кількості повторень номерів з літерою «А» на початку
-		const quantityNumbersStartingWithA = calcNumbersStartingWithA('a', randomLicensePlatesArray)
+		const quantityNumbersStartingWithA = calcNumbersStartingWithA('a'.toUpperCase(), randomLicensePlatesArray)
 		// Константа з результатом кількості повторень номерів де співпадають перша та остання літери
 		const quantitySameFirstAndLastLetter = calcSameFirstAndLastLetter(randomLicensePlatesArray)
 		// Константа з результатом кількості повторень номерів де довжина більше ніж 5 символів
@@ -37,7 +37,7 @@
 			const tempArr = []
 			for (let name = 0; name < LicensePlates.length; name++) {
 				const randomLicensePlateIndex = Math.floor(1 + Math.random() * LicensePlates.length - 1)
-				tempArr.push(LicensePlates[randomLicensePlateIndex])
+				tempArr.push(LicensePlates[randomLicensePlateIndex].toUpperCase())
 			}
 			return tempArr
 		}
@@ -46,7 +46,7 @@
 		function calcNumbersStartingWithA(letter, arr) {
 			let counterStartA = 0
 			for (let i = 0; i < arr.length; i++)
-				if (arr[i][0].toUpperCase() === letter.toUpperCase())
+				if (arr[i][0] === letter)
 					counterStartA++
 			return counterStartA
 		}
@@ -57,7 +57,7 @@
 			for (let i = 0; i < arr.length; i++) {
 				const firstLetter = arr[i][0]
 				const lastLetter = arr[i][arr[i].length - 1]
-				if (firstLetter.toUpperCase() === lastLetter.toUpperCase())
+				if (firstLetter === lastLetter)
 					counterDuplecate++
 			}
 			return counterDuplecate

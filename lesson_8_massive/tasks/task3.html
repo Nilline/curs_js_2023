@@ -36,7 +36,7 @@
 		// Так як по умові задачі потрібно або вводити імена вручну або генерувати автоматично створюю окремий массив з випадкових імен
 		const randomNames = fillRandomNamesArray(names)
 		// Константа з текстом для пошуку в масиві
-		const findName = 'Іван'
+		const findName = 'Іван'.toLowerCase()
 		// Константа з результатом кількості повторень ім'я всередині масиву
 		const repeatDuplicateName = getFindDuplicateNames(findName, randomNames)
 
@@ -45,7 +45,7 @@
 			const tempArr = []
 			for (let name = 0; name < namesArray.length; name++) {
 				const randomNameIndex = Math.floor(1 + Math.random() * namesArray.length - 1)
-				tempArr.push(names[randomNameIndex])
+				tempArr.push(names[randomNameIndex].toLowerCase())
 			}
 			return tempArr
 		}
@@ -54,7 +54,7 @@
 		function getFindDuplicateNames(name, arr) {
 			let counterRepeatName = 0
 			for (let i = 0; i < arr.length; i++)
-				if (name.toLowerCase() === arr[i].toLowerCase()) // На мій погляд вірний підхід при порівнянні рядків приводити все до одного регістру так як js чутливий до такого
+				if (name === arr[i])
 					counterRepeatName++
 			return counterRepeatName
 		}

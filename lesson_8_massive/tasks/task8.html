@@ -31,17 +31,14 @@
 				const randomPayment = Math.floor(minSum + Math.random() * (maxSum - minSum + 1))
 				arrWinning.push(randomPayment)
 			}
+			runGame()
 		}
 
 		// Обчислюємо виграш користувача
 		function calcUserWinning(num, arr) {
-			for (let i = 0; i < arr.length; i++)
-				if (i === num - 1) {
-					const newWinningSum = totalUserWinning + arr[i]
-					textUserWinning += getUserWinsSequence(i, arr, totalUserWinning, newWinningSum)
-					totalUserWinning += arr[i]
-					break;
-				}
+			const newWinningSum = totalUserWinning + arr[num - 1]
+			textUserWinning += getUserWinsSequence(num - 1, arr, totalUserWinning, newWinningSum)
+			totalUserWinning += arr[num - 1]
 		}
 
 		function getUserWinsSequence(currentUserNum, arr, lastWinning, newWinning) {
@@ -53,10 +50,13 @@
 		}
 
 		// Використовуємо цикл питаючи користувача номера для подальшої гри (додаткові перевірки не робив так як просили цього не робити)
-		do {
-			chosenElementNumber = parseInt(prompt(`Введіть номер від 1 до ${winSumArray.length}. Якщо бажаєте забрати свій виграш натисніть "Відміна"`))
-			calcUserWinning(chosenElementNumber, winSumArray)
-		} while (!isNaN(chosenElementNumber))
+		function runGame(chosenElementNumber) {
+			do {
+				chosenElementNumber = parseInt(prompt(`Введіть номер від 1 до ${winSumArray.length}. Якщо бажаєте забрати свій виграш натисніть "Відміна"`))
+				if (!isNaN(chosenElementNumber) && chosenElementNumber <= winSumArray.length && chosenElementNumber > 0)
+					calcUserWinning(chosenElementNumber, winSumArray)
+			} while (!isNaN(chosenElementNumber))
+		}
 
 		// Виводимо результат в HTML
 		document.write(`

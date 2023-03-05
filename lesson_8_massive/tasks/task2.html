@@ -11,35 +11,36 @@
 
 		// Кількість днів в тижні
 		const DAYS_IN_WEEK = 7
+		// Мінімальна кількість відвідувачів за день
+		const minVisitorsDay = 20
+		// Максимальна кількість відвідувачів за день
+		const maxVisitorsDay = 40
 		// Масив для збереження інформації по кількості відвідувачів за кожен день
-		const storeVisitorsArray = fillWeeklyVisitorsArray(DAYS_IN_WEEK)
+		const storeVisitorsArray = fillWeeklyVisitorsArray(DAYS_IN_WEEK, maxVisitorsDay)
 		// Масив для збереження інформації з номерами днів коли кількість відвідувачів була менше за 20
-		const arrVisitorsLessThan20 = getVisitorsLessThan20(storeVisitorsArray)
+		const arrVisitorsLessThan20 = getVisitorsLessThan20(storeVisitorsArray, minVisitorsDay)
 		// Масив для збереження інформації з номером дня коли кількість відвідувачів була мінімальною
 		const dayMinVisitors = getDayMinVisitors(storeVisitorsArray)
 		// Масив для збереження інформації з кількістю відвідувачів у роботі та вихідні дні
 		const workingAndWeekendDaysVisitors = getWorkingAndWeekendDaysVisitors(storeVisitorsArray)
 
 		// Запомняємо массив випадковими числами з кількісттю відвідувачів
-		function fillWeeklyVisitorsArray(days) {
+		function fillWeeklyVisitorsArray(days, maxVisitorsDay) {
 			const tempArr = []
 			for (let day = 0; day < days; day++) {
-				const visitors = 1 + Math.floor(Math.random() * 40)
+				const visitors = 1 + Math.floor(Math.random() * maxVisitorsDay)
 				tempArr.push(visitors)
 			}
 			return tempArr
 		}
 
 		// Функція пошуку коли кількість відвідувачів була менше за 20 
-		function getVisitorsLessThan20(visitors) {
+		function getVisitorsLessThan20(visitors, minVisitorsDay) {
 			const tempArrNumberDay = []
 			for (let day = 0; day < visitors.length; day++)
-				if (visitors[day] < 20)
+				if (visitors[day] < minVisitorsDay)
 					tempArrNumberDay.push(day + 1)
-			if (tempArrNumberDay.length)
-				return tempArrNumberDay
-			else
-				return 'ваш магазин відвідало багато людей на цьому тижні'
+			return tempArrNumberDay
 		}
 
 		// Функція пошуку коли кількість відвідувачів була мінімальною
@@ -64,8 +65,11 @@
 				else
 					weekendDayVisitors += visitors[i]
 			}
-			return `У робочі дні загальна кількість клієнтів складає ${workingDayVisitors}<br>У вихідні дні загальна кількість клієнтів складає ${weekendDayVisitors}`
+			// return `У робочі дні загальна кількість клієнтів складає ${workingDayVisitors}<br>У вихідні дні загальна кількість клієнтів складає ${weekendDayVisitors}`
+			return { workingDayVisitors, weekendDayVisitors }
 		}
+
+		const { workingDayVisitors, weekendDayVisitors } = workingAndWeekendDaysVisitors
 
 		// Виводимо в HTML задачу та результат
 		document.write(`
@@ -82,7 +86,7 @@
 				</tr>
 				<tr>
 					<td>Номери днів коли кількість відвідувачів була менше за 20</td>
-					<td>${arrVisitorsLessThan20}</td>
+					<td>${arrVisitorsLessThan20.length ? arrVisitorsLessThan20 : 'ваш магазин відвідало багато людей на цьому тижні'}</td>
 				</tr>
 				<tr>
 					<td>Номер дня з мінімальною кількістю відвідувачів</td>
@@ -90,7 +94,7 @@
 				</tr>
 				<tr>
 					<td>Загальна кількість клієнтів</td>
-					<td>${workingAndWeekendDaysVisitors}</td>
+					<td>У робочі дні загальна кількість клієнтів складає ${workingDayVisitors}<br>У вихідні дні загальна кількість клієнтів складає ${weekendDayVisitors}</td>
 				</tr>
 			</table>
 		`)

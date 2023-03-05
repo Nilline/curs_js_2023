@@ -16,15 +16,15 @@
 		// Запомняємо масив paymentsArray платіжними данними
 		fillPaymentsArrayWithRandomNumbers(MONTH_IN_YEAR, paymentsArray)
 		// Константа яка зберігає сумарну кількість грошей за весь рік
-		const totalMoneyForYear = getTotalMoneyForYear(paymentsArray)
-		// Константа яка зберігає сумарну кількість грошей за весь рік
-		const totalMoneyForFirstHalfYear = ggetSumForFirstHalfYear(paymentsArray)
-		// Константа яка зберігає сумарну кількість грошей за весь рік
-		const totalMoneyForLastHalfYear = getSumForLasttHalfYear(paymentsArray)
+		const totalMoneyForYear = getMoneySumBetweenMonths(paymentsArray, 1, 12)
+		// Константа яка зберігає сумарну кількість грошей за першшу половину року
+		const totalMoneyForFirstHalfYear = getMoneySumBetweenMonths(paymentsArray, 1, 6)
+		// Константа яка зберігає сумарну кількість грошей за другу половину року
+		const totalMoneyForLastHalfYear = getMoneySumBetweenMonths(paymentsArray, 7, 12)
 		// Константа яка зберігає сумарну кількість грошей за літо
-		const totalMoneyForSummer = getMoneySumBetweenMonths(paymentsArray, 6, 9)
+		const totalMoneyForSummer = getMoneySumBetweenMonths(paymentsArray, 6, 8)
 		// Константа яка зберігає сумарну кількість грошей за ІІ квартал;
-		const totalMoneyQuartedTwo = getMoneySumBetweenMonths(paymentsArray, 3, 6)
+		const totalMoneyQuartedTwo = getMoneySumBetweenMonths(paymentsArray, 3, 5)
 		// Константа яка зберігає сумарну кількість грошей за парні місяці (з парними номерами)
 		const totalSumOfEvenMonths = getSumOfEvenMonths(paymentsArray)
 		// Константа яка зберігає сумарну кількість грошей за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
@@ -33,39 +33,15 @@
 		// Заповняємо масив paymentsArray випадковими числами платежів
 		function fillPaymentsArrayWithRandomNumbers(quantityMonth, arrPayments) {
 			for (let month = 0; month < quantityMonth; month++) {
-				const randomPayment = Math.floor(200 + Math.random() * (500 - 200 + 1)) // Як визначити мінімальне та максимальне число з умови задачі не зрозумів тому поставив з голови
+				const randomPayment = Math.floor(1 + Math.random() * (1 - 1 + 1)) // Як визначити мінімальне та максимальне число з умови задачі не зрозумів тому поставив з голови
 				arrPayments.push(randomPayment)
 			}
-		}
-
-		// Знаходимо сумму грошей за весь рік
-		function getTotalMoneyForYear(arr) {
-			let tempSum = 0
-			for (let month = 0; month < arr.length; month++)
-				tempSum += arr[month]
-			return tempSum
-		}
-
-		// Знаходимо сумму грошей за першшу половину року
-		function ggetSumForFirstHalfYear(arr) {
-			let tempSum = 0
-			for (let month = 0; month < arr.length / 2; month++)
-				tempSum += arr[month]
-			return tempSum
-		}
-
-		// Знаходимо сумму грошей за другу половину року
-		function getSumForLasttHalfYear(arr) {
-			let tempSum = 0
-			for (let month = arr.length / 2; month < arr.length; month++)
-				tempSum += arr[month]
-			return tempSum
 		}
 
 		// Знаходимо сумму грошей за літо (або в любому проміжку між startMonth та endMonth)
 		function getMoneySumBetweenMonths(arr, startMonth, endMonth) {
 			let tempSum = 0
-			for (let month = startMonth - 1; month < endMonth - 1; month++)
+			for (let month = startMonth - 1; month < endMonth; month++)
 				tempSum += arr[month]
 			return tempSum
 		}
