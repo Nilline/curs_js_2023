@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 10</title>
+	<script>
+
+		// Кількість повторень генерації масиву
+		const quantityPrices = parseInt(prompt('Введіть необхідну кількість елементів в масиві', '15'))
+		// Мінімальне випадкове число
+		const minRandomNumber = parseInt(prompt('Введіть мінімальне число в масиві', '100'))
+		// Максимальне випадкове число
+		const maxRandomNumber = parseInt(prompt('Введіть максимальне число в масиві', '1800'))
+		// Кофіцієнт податку
+		const taxCoefficient = 0.2
+		// Масив випадкових чисел
+		const arrPrices = fillArrayPrices(quantityPrices, minRandomNumber, maxRandomNumber)
+		// Створення нового масиву з податками
+		const arrTaxPrices = calculateTaxes(arrPrices, taxCoefficient)
+
+		// Функція, що генерує випадкові числа від min до max
+		function generateRandomNumber(min, max) {
+			return Math.floor(min + Math.random() * (max - min + 1))
+		}
+
+		// Функція, яка створює масив випадкових чисел з заданою кількістю елементів
+		function fillArrayPrices(repeat, minNumber, MaxNumber) {
+			let tempArr = []
+			for (let i = 0; i < repeat; i++)
+				tempArr.push(generateRandomNumber(minRandomNumber, maxRandomNumber))
+			return tempArr
+		}
+
+		// Функція для створення масиву з величинами сплаченого податку
+		function calculateTaxes(prices, tax) {
+			return prices.map(price => price * tax)
+		}
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача №10: Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у грн.</td>
+				</tr>
+				<tr>
+					<td>Ціни товарів</td>
+					<td>${arrPrices.join('<br>')}</td>
+				</tr>
+				<tr>
+					<td>Ціни товарів</td>
+					<td>${arrTaxPrices.join('<br>')}</td>
+				</tr>
+			</table>
+		`);
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

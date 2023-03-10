@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<script>
+
+		const namesArray = [
+			'Андрій',
+			'Богдан',
+			'Віктор',
+			'Галина',
+			'Дарина',
+			'Євген',
+			'Іван',
+			'Катерина',
+			'Леся',
+			'Максим',
+			'Наталія',
+			'Олександр',
+			'Павло',
+			'Роман',
+			'Світлана',
+			'Тетяна',
+			'Уляна',
+			'Федір',
+			'Христина',
+			'Ярослав'
+		];
+
+		const arrayNamesFirstLetter = namesArray.map(name => name[0])
+
+
+		// Виводимо задачу та результат в HTML
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 9. Дано масив імен. Сформувати масив з перших літер цих імен.</td>
+				</tr>
+				<tr>
+					<td>Масив з іменами</td>	
+					<td>${namesArray.join('<br>')}</td>	
+				</tr>
+				<tr>
+					<td>Масив з першими літерами імен</td>	
+					<td>${arrayNamesFirstLetter.join('<br>')}</td>	
+				</tr>
+			</table>
+		`)
+	</script>
+	<title>task 9</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

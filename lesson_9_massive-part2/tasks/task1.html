@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 1</title>
+	<script>
+		// Питаємо у користувача кількість елементів в масиві
+		const quantityArrayElements = parseInt(prompt('Введіть необхідну кількість елементів в масиві', '10'))
+		// Створюємо масив з quantityArrayElements кількістю елементів і заповняємо нулями
+		const arrElements = new Array(quantityArrayElements).fill(0)
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>
+						Задача 1. Користувач вводить кількість елементів. Створити масив, що складається з вказаної кількості елементів заповнених нулями.
+					</td>
+				</tr>
+				<tr>
+					<td>Кількість елементів масиву</td>
+					<td>${quantityArrayElements}</td>
+				</tr>
+				<tr>
+					<td>Масив заповнений нулями</td>
+					<td>${arrElements} --- Довжина масиву ${arrElements.length}</td>
+				</tr>
+			</table>
+		`)
+
+		// Функція повернення пори року
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

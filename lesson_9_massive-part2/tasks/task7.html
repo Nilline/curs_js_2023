@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 7</title>
+	<script>
+
+		// Кількість повторень генерації масиву
+		const quantityUserRepeat = parseInt(prompt('Введіть необхідну кількість елементів в масиві', '15'))
+		// Мінімальне випадкове число
+		const minRandomNumber = parseInt(prompt('Введіть мінімальне число в масиві', '100'))
+		// Максимальне випадкове число
+		const maxRandomNumber = parseInt(prompt('Введіть максимальне число в масиві', '1800'))
+		// Кофіцієнт знижки
+		const discountCoefficient = 0.3
+		// Мінімальна сума товару для знижки
+		const minPriceForDiscount = 1000
+		// Масив випадкових чисел
+		const arrPrices = fillArrayPrices(quantityUserRepeat, minRandomNumber, maxRandomNumber)
+		// Створення нового масиву зі знижками
+		const arrDiscountPrices = arrPrices.map((price, i, arr) => price > minPriceForDiscount ? price - (price * discountCoefficient) : price)
+
+		// Функція, що генерує випадкові числа від min до max
+		function generateRandomNumber(min, max) {
+			return Math.floor(min + Math.random() * (max - min + 1))
+		}
+		// Функція, яка створює масив випадкових чисел з заданою кількістю елементів
+		function fillArrayPrices(repeat, minNumber, maxNumber) {
+			let tempArr = []
+			for (let i = 0; i < repeat; i++)
+				tempArr.push(generateRandomNumber(minNumber, maxNumber))
+			return tempArr
+		}
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача №7: Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.</td>
+				</tr>
+				<tr>
+					<td>Ціни товарів</td>
+					<td>${arrPrices.join('<br>')}</td>
+				</tr>
+				<tr>
+					<td>Ціни товарів</td>
+					<td>${arrDiscountPrices.join('<br>')}</td>
+				</tr>
+			</table>
+		`);
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

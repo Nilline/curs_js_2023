@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 2</title>
+	<script>
+
+		// Кількість елементів в масиві
+		const quantityArrayElements = parseInt(prompt('Введіть необхідну кількість елементів в масиві', '25000000'))
+
+		// Створюємо масив з визначеною кількістю елементів
+		const arrElements = new Array(quantityArrayElements)
+
+		// Знаходимо довжину половини масива
+		const halfLength = arrElements.length / 2
+
+		// Функція, яка заповнює масив значеннями 1 та 7
+		function fillArrayNumbers(halfArrLength, arr) {
+			// Проходимось по половині масиву та заповнюємо значеннями 1 та 7 одразу з обох боків для оптимізації
+			for (let i = 0; i < halfArrLength; i++) {
+				arr[i] = 1
+				arr[arr.length - i - 1] = 7
+			}
+		}
+
+		// Викликаємо функцію заповнення масиву
+		fillArrayNumbers(halfLength, arrElements)
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 2. Користувач вводить кількість елементів. Створити масив, у якому перша половина заповнена 1-цями, а друга заповнена 7-ками</td>
+				</tr>
+				<tr>
+					<td>Кількість елементів масиву</td>
+					<td>${arrElements.length}</td>
+				</tr>
+				<tr>
+					<td>Елементи масиву</td>
+					<td>${arrElements.length < 10001 ? arrElements.join(', ') : 'Не варто так багато елементів виводити в html'}</td>
+				</tr>
+			</table>
+		`)
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

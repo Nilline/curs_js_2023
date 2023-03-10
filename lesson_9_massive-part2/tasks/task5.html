@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 5</title>
+	<script>
+
+		// Кількість повторень генерації масиву
+		const quantityUserRepeat = parseInt(prompt('Введіть необхідну кількість елементів в масиві', '5'))
+		// Мінімальне випадкове число
+		const minRandomNumber = parseInt(prompt('Введіть мінімальне число в масиві, варто написати негативне число', '-10'))
+		// Максимальне випадкове число
+		const maxRandomNumber = parseInt(prompt('Введіть максимальне число в масиві, варто написати позитивне число', '10'))
+		// Масив випадкових чисел
+		const arrElementsNumbers = new Array(quantityUserRepeat)
+			.fill()
+			.map(() => generateRandomNumber(minRandomNumber, maxRandomNumber))
+		// Константа з добутком позитивних чисел
+		const multiplyNumber = multiplyPositiveNumbers(arrElementsNumbers)
+
+		// Функція, що генерує випадкові числа від min до max
+		function generateRandomNumber(min, max) {
+			return Math.floor(min + Math.random() * (max - min + 1))
+		}
+		/*
+		Функція, що заповнює масив випадковими елементами 
+		(цю функцію залишив як більш оптимізовану версію, але для саме цієї задачі
+		не бачу сенсу в цій функції так як по умові задачі елементів не може бути багато а то отримаємо Infinity і варто хоч десь попрактикувати map)
+		*/
+		// function fillArray(repeat, minNumber, maxNumber) {
+		// 	const tempArr = []
+		// 	for (let i = 0; i < repeat; i++)
+		// 		tempArr.push(generateRandomNumber(minNumber, maxNumber))
+		// 	return tempArr
+		// }
+
+		// Функція, що множить тільки додатні числа масиву
+		function multiplyPositiveNumbers(arr) {
+			let sum = 1
+			for (const num of arr)
+				if (num > 0) sum *= num
+			return sum
+		}
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 5. ---------- Тут використати цикл for..of -----------<br> Дано масив елементів. Знайти добуток додатних елементів</td>
+				</tr>
+				<tr>
+					<td>Масив з усіма числами</td>
+					<td>${arrElementsNumbers.join(', ')}</td>
+				</tr>
+				<tr>
+					<td>Масив добутком позитивних чисел</td>
+					<td>${multiplyNumber}</td>
+				</tr>
+			</table>
+		`);
+
+		// Створюємо функцію для prompt
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

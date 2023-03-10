@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 4</title>
+	<script>
+
+		// Кількість повторень генерації масиву
+		const quantityUserRepeat = parseInt(prompt('Введіть необхідну кількість елементів в масиві', '1000'))
+		// Мінімальне випадкове число
+		const minRandomNumber = parseInt(prompt('Введіть мінімальне число в масиві, менше ніж 100', '1'))
+		// Максимальне випадкове число
+		const maxRandomNumber = parseInt(prompt('Введіть максимальне число в масиві, більше ніж 100', '150'))
+		// Масив випадкових чисел
+		const arrElementsNumbers = fillArray(quantityUserRepeat, minRandomNumber, maxRandomNumber)
+		// Масив елементів більше за 100
+		const filterArrayElementsMoreThan100 = filterNumbersArrayMoreThan(arrElementsNumbers)
+
+		// Функція, що генерує випадкові числа від min до max
+		function generateRandomNumber(min, max) {
+			return Math.floor(min + Math.random() * (max - min + 1))
+		}
+
+		// Функція, що заповнює масив випадковими елементами (це залишив тому що не до кінця розумію краще заповнити масив так як зараз активно чи окремою цією функцією)
+		function fillArray(repeat, minNumber, maxNumber) {
+			const tempArr = []
+			for (let i = 0; i < repeat; i++)
+				tempArr.push(generateRandomNumber(minNumber, maxNumber))
+			return tempArr
+		}
+
+		// Функція що фільтрує значення масиву виходячи з умови та повертає новий масив (краще б використати було filter)
+		function filterNumbersArrayMoreThan(arr, filterNumber = 100) { // додав другий аргумент для універсальності функції
+			let tempArr = []
+			for (const num of arr)
+				if (num > filterNumber) tempArr.push(num)
+			return tempArr
+		}
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 4. ---------- Тут використати цикл for..of -----------<br> Дано масив елементів. Вивести на екран елементи, що більші за 100</td>
+				</tr>
+				<tr>
+					<td>Кількість повторень</td>
+					<td>${quantityUserRepeat}</td>
+				</tr>
+				<tr>
+					<td>Мінімальне число</td>
+					<td>${minRandomNumber}</td>
+				</tr>
+				<tr>
+					<td>Максимальне число</td>
+					<td>${maxRandomNumber}</td>
+				</tr>
+				<tr>
+					<td>Масив з усіма цифрами</td>
+					<td>${arrElementsNumbers.join(', ')}</td>
+				</tr>
+				<tr>
+					<td>Масив з цифрами які більше за 100</td>
+					<td>${filterArrayElementsMoreThan100.join(', ')}</td>
+				</tr>
+			</table>
+		`)
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
