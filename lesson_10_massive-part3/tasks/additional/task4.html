@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../css/style.css">
+	<title>task 4</title>
+	<script>
+
+		// Количество элементов массива
+		const arrayLength = 10
+		// Первый элемент X
+		const X = parseInt(prompt('Введите число первого элемента', '4'))
+		// Разность D
+		const D = parseInt(prompt('Введите число разности', '3'))
+		// Создаем массив исходя из задачи
+		const arrayNumbers = new Array(arrayLength).fill(X).map((val, i) => val + i * D)
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 4. Сформировать массив из элементов арифметической прогрессии с заданным первым элементом x и разностью d.</td>
+				</tr>
+				<tr>
+					<td>Массив</td>
+					<td>${arrayNumbers.join(', ')}</td>
+				</tr>
+			</table>
+		`)
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

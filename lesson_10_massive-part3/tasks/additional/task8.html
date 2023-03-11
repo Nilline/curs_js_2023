@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../css/style.css">
+	<title>task 8</title>
+	<script>
+
+		// Количество элементов массива
+		const arrayLength = 20
+
+		// Объявляем функцию, которая генерирует массив простых чисел заданной длины
+		function generatePrimesArray(arrayLength) {
+			// Создаем пустой массив, куда будем добавлять простые числа
+			let primes = []
+			// Создаем массив arrNumbers, заполненный числами от 2 до arrayLength * 10
+			let arrNumbers = new Array(arrayLength * 10).fill().map((val, i) => i + 2)
+			// Задаем начальное значение num равное первому элементу массива arrNumbers
+			let num = arrNumbers[0]
+			// Выполняем цикл do-while пока длина массива primes меньше заданной длины arrayLength
+			do {
+				// Добавляем текущее значение num в массив primes
+				primes.push(num)
+				// Фильтруем массив arrNumbers, оставляя только те числа, которые не делятся на num
+				arrNumbers = arrNumbers.filter(val => val % num !== 0)
+				// Находим первое число в массиве arrNumbers, которое больше, чем num
+				num = arrNumbers.find(val => val > num)
+			} while (primes.length < arrayLength)
+			// Возвращаем массив простых чисел
+			return primes
+		}
+
+		// Вызываем функцию generatePrimesArray с заданным значением arrayLength
+		const primes = generatePrimesArray(arrayLength)
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 8. Заполнить массив заданной длины различными простыми числами. Натуральное число, большее единицы, называется простым, если оно делится только на себя и на единицу.</td>
+				</tr>
+				<tr>
+					<td>Массив</td>
+					<td>${primes.join(', ')}</td>
+				</tr>
+			</table>
+		`)
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 1</title>
+	<script>
+		// Питаємо у користувача кількість елементів в масиві
+		const quantityArrayElements = parseInt(prompt('Введіть необхідну кількість елементів в масиві', '5'))
+
+		function generateRandomNumber(min, max) {
+			return min + Math.floor(Math.random() * (max - min + 1))
+		}
+
+		function fillArrayPrices(repeat, minPrice, maxPrice) {
+			const tempArr = []
+			for (let i = 0; i < repeat; i++)
+				tempArr.push(generateRandomNumber(minPrice, maxPrice))
+			return tempArr
+		}
+
+		const pricesArray = fillArrayPrices(quantityArrayElements, 850, 1200)
+
+		//========================================================================================================================================================
+		// 1)Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.
+		const arrayPricesMoreThan1000 = pricesArray.filter(price => price > 1000)
+		//========================================================================================================================================================
+		// 2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
+		const arrayIndexMoreThan1000 = pricesArray.reduce((prevArrayPrices, price, index) => price > 1000 ? [...prevArrayPrices, index] : prevArrayPrices, [])
+		//========================================================================================================================================================
+		// 3)Сформувати список з тих цін, які більші за попереднє значення
+		const arrayPricesMoreThanPreviousValue = pricesArray.reduce((prevArrayPrices, price, index, baseArray) => baseArray[index - 1] < price ? [...prevArrayPrices, price] : prevArrayPrices, [])
+		//========================================================================================================================================================
+		// 4)Сформувати новий масив, що міститиме значення цін у відсотках. Округлення зроблено для вивода масива в нормальному виді в html без значень типу 122.5525215125% (знаю що краще при виводі toFixed але я вивожу масив і це є проблема так зробити не роблячи зайвих маніпуляцій з масивом)
+		const arrayPricesPercent = pricesArray.map(price => Math.round((price / 1000 * 100) * 100) / 100)
+		//========================================================================================================================================================
+		// 5)Підрахувати кількість змін цін
+		const counterChangedPrices = pricesArray.reduce((counterChangePrice, price, i, baseArray) => i !== 0 && price !== baseArray[i - 1] ? counterChangePrice + 1 : counterChangePrice, 0)
+		//========================================================================================================================================================
+		// 6)Визначити, чи є ціна, що менше 1000
+		const checkPriceLessThan1000 = pricesArray.some(price => price < 1000)
+		//========================================================================================================================================================
+		// 7)Визначати, чи усі ціни більше за 1000
+		const checkAllPricesMoreThan1000 = pricesArray.every(price => price > 1000)
+		//========================================================================================================================================================
+		// 8)Підрахувати кількість цін, що більше за 1000
+		const counterPricesMoreThan1000 = pricesArray.reduce((counterPriceMoreThan1000, price) => price > 1000 ? counterPriceMoreThan1000 + 1 : counterPriceMoreThan1000, 0)
+		//========================================================================================================================================================
+		// 9)Підрахувати суму цін, що більше за 1000
+		const sumPricesMoreThan1000 = pricesArray.reduce((sumPriceMoreThan1000, price) => price > 1000 ? sumPriceMoreThan1000 += price : sumPriceMoreThan1000)
+		//========================================================================================================================================================
+		// 10)Знайти першу ціну, що більше за 1000
+		const findFirstPriceMoreThan1000 = pricesArray.find(price => price > 1000)
+		//========================================================================================================================================================
+		// 11)Знайти індекс першої ціни, що більше за 1000
+		const findIndexFirstPriceMoreThan1000 = pricesArray.findIndex(price => price > 1000)
+		//========================================================================================================================================================
+		// 12)Знайти останню ціну, що більше за 1000
+		const findLastPriceMoreThan1000 = pricesArray.filter(price => price > 1000).pop()
+		//========================================================================================================================================================
+		// 13)Знайти індекс останньої ціни, що більше за 1000
+		const findLastIndexPriceMoreThan1000 = pricesArray.findLastIndex(price => price > 1000)
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>
+						Задача.
+						Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)<br><br>
+						1)Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.<br>
+						2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.<br>
+						3)Сформувати список з тих цін, які більші за попереднє значення<br>
+						4)Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального<br>
+						5)Підрахувати кількість змін цін<br>
+						6)Визначити, чи є ціна, що менше 1000<br>
+						7)Визначати, чи усі ціни більше за 1000<br>
+						8)Підрахувати кількість цін, що більше за 1000<br>
+						9)Підрахувати суму цін, що більше за 1000<br>
+						10)Знайти першу ціну, що більше за 1000<br>
+						11)Знайти індекс першої ціни, що більше за 1000<br>
+						12)Знайти останню ціну, що більше за 1000<br>
+						13)Знайти індекс останньої ціни, що більше за 1000
+				</span>
+					</td>
+				</tr>
+				<tr>
+					<td>Кількість елементів масиву ${pricesArray.length}</td>
+					<td style="font-size: 16px;">${pricesArray.join(', ')}</td>
+				</tr>
+				<tr>
+					<td>1) Новий масив, у якому є тільки ті, що більші за 1000 грн.</td>
+					<td style="font-size: 16px;">${arrayPricesMoreThan1000.join(', ')}</td>
+				</tr>
+				<tr>
+					<td>2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.</td>
+					<td style="font-size: 16px;">${arrayIndexMoreThan1000.join(', ')}</td>
+				</tr>
+				<tr>
+					<td>3)Сформувати список з тих цін, які більші за попереднє значення</td>
+					<td style="font-size: 16px;">${arrayPricesMoreThanPreviousValue.join(', ')}</td>
+				</tr>
+				<tr>
+					<td>4)Сформувати новий масив, що міститиме значення цін у відсотках</td>
+					<td style="font-size: 16px;">${arrayPricesPercent.join('%, ')}%</td>
+				</tr>
+				<tr>
+					<td>5)Підрахувати кількість змін цін</td>
+					<td style="font-size: 16px;">${counterChangedPrices} разів змінилась ціна</td>
+				</tr>
+				<tr>
+					<td>6)Визначити, чи є ціна, що менше 1000</td>
+					<td style="font-size: 16px;">${checkPriceLessThan1000 ? 'Такая ціна є' : 'Такої ціни немає'}</td>
+				</tr>
+				<tr>
+					<td>7)Визначати, чи усі ціни більше за 1000</td>
+					<td style="font-size: 16px;">${checkAllPricesMoreThan1000 ? 'Всі ціни більше за 1000' : 'Не всі ціни більше за 1000'}</td>
+				</tr>
+				<tr>
+					<td>8)Підрахувати кількість цін, що більше за 1000</td>
+					<td style="font-size: 16px;">${counterPricesMoreThan1000}</td>
+				</tr>
+				<tr>
+					<td>9)Підрахувати суму цін, що більше за 1000</td>
+					<td style="font-size: 16px;">${sumPricesMoreThan1000}</td>
+				</tr>
+				<tr>
+					<td>10)Знайти першу ціну, що більше за 1000</td>
+					<td style="font-size: 16px;">${findFirstPriceMoreThan1000}</td>
+				</tr>
+				<tr>
+					<td>11)Знайти індекс першої ціни, що більше за 1000</td>
+					<td style="font-size: 16px;">${findIndexFirstPriceMoreThan1000}</td>
+				</tr>
+				<tr>
+					<td>12)Знайти останню ціну, що більше за 1000</td>
+					<td style="font-size: 16px;">${findLastPriceMoreThan1000}</td>
+				</tr>
+				<tr>
+					<td>13)Знайти індекс останньої ціни, що більше за 1000</td>
+					<td style="font-size: 16px;">${findLastIndexPriceMoreThan1000}</td>
+				</tr>
+			</table>
+		`)
+
+		// Функція повернення пори року
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

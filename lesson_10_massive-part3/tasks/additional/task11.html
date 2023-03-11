@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../css/style.css">
+	<title>task 11</title>
+	<script>
+
+		// Количество элементов массива
+		const arrayLength = 20
+		// Создаем новый массив baseArr заданной длины, заполненный случайными числами от 1 до 3.
+		const baseArr = new Array(arrayLength).fill().map(() => generateRandomNumbers(1, 3));
+
+		function getArrayTriplesSameElementsRow(baseArr) {
+			// Создаем пустой массив resultArr, в который будут помещены тройки из baseArr.
+			const tempArr = [];
+			// Запускаем цикл for, проходящий по элементам массива baseArr, за исключением последних двух элементов.
+			for (let i = 0; i < baseArr.length - 2; i++)
+				if (baseArr[i] === baseArr[i + 1] && baseArr[i] === baseArr[i + 2])
+					tempArr.push([baseArr[i], baseArr[i + 1], baseArr[i + 2]])
+			// Возвращаем массив с результатом
+			return tempArr
+		}
+		// функция generateRandomNumbers, которая генерирует случайное число в заданном диапазоне
+		function generateRandomNumbers(min, max) {
+			return min + Math.floor(Math.random() * (max - min + 1))
+		}
+
+		const resultArr = getArrayTriplesSameElementsRow(baseArr)
+
+		// Выводим в HTMl задачу и результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 11. Создать массив, состоящий из троек подряд идущих одинаковых элементов.</td>
+				</tr>
+				<tr>
+					<td>Изначальный массив</td>
+					<td>${baseArr.join(', ')}</td>
+				</tr>
+				<tr>
+					<td>Массив с результатом</td>
+					<td>${resultArr.join('<br>')}</td>
+				</tr>
+			</table>
+		`)
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

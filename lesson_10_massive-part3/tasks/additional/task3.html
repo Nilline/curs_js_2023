@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../css/style.css">
+	<title>task 3</title>
+	<script>
+
+		// Количество элементов массива
+		const arrayLength = 10
+		// Создаем массив исходя из задачи
+		const arrayNumbers = new Array(arrayLength).fill().map((_, i) => (i * 2) + 1)
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 3. Заполнить массив последовательными нечетными числами, начиная с единицы.</td>
+				</tr>
+				<tr>
+					<td>Массив</td>
+					<td>${arrayNumbers.join(', ')}</td>
+				</tr>
+			</table>
+		`)
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

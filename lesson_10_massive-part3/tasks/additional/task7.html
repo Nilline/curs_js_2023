@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../css/style.css">
+	<title>task 7</title>
+	<script>
+
+		// Количество элементов массива
+		const arrayLength = 10
+		// Создаем массив исходя из задачи
+		const arrFibonacchiNumbers = new Array(arrayLength).fill(0).reduce((acc, num, i, baseArr) => {
+			if (i < 2)
+				baseArr[i] = i
+			else
+				baseArr[i] = baseArr[i - 1] + baseArr[i - 2]
+			return baseArr
+		})
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 7. Создать массив из n первых чисел Фибоначчи.</td>
+				</tr>
+				<tr>
+					<td>Массив</td>
+					<td>${arrFibonacchiNumbers.join(', ')}</td>
+				</tr>
+			</table>
+		`)
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

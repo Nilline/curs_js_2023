@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../css/style.css">
+	<title>task 6</title>
+	<script>
+
+		// Количество элементов массива
+		const arrayLength = 30
+		// Создаем массив исходя из задачи
+		const arrDecreasingNumbers = new Array(arrayLength).fill().map((num, i, baseArr) => (baseArr.length - i) * 3)
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 6. Сформировать убывающий массив из чисел, которые делятся на 3</td>
+				</tr>
+				<tr>
+					<td>Массив</td>
+					<td>${arrDecreasingNumbers.join(', ')}</td>
+				</tr>
+			</table>
+		`)
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

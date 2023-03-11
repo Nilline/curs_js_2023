@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../css/style.css">
+	<title>task 9</title>
+	<script>
+
+		// Количество элементов массива
+		const arrayLength = 20
+		// Создание нового массива, содержащего квадраты чисел от 0 до arrayLength
+		const arrQuartNumbers = new Array(arrayLength).fill().map((_, i) => Math.pow(i, 2))
+
+		console.log(arrQuartNumbers);
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 9. Создать массив, каждый элемент которого равен квадрату своего номера</td>
+				</tr>
+				<tr>
+					<td>Массив</td>
+					<td>${arrQuartNumbers.join(', ')}</td>
+				</tr>
+			</table>
+		`)
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

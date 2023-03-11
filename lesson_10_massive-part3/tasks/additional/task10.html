@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../css/style.css">
+	<title>task 10</title>
+	<script>
+
+		// Количество элементов массива
+		const arrayLength = 20
+		// Создание нового массива
+		const arrEvenOddPositionNumbers = new Array(arrayLength).fill().map((_, i) => i % 2 === 0 ? 1 : i % 5)
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>Задача 10. Создать массив, на четных местах в котором стоят единицы, а на нечетных местах - числа, равные остатку от деления своего номера на 5.</td>
+				</tr>
+				<tr>
+					<td>Массив</td>
+					<td>${arrEvenOddPositionNumbers.join(', ')}</td>
+				</tr>
+			</table>
+		`)
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
