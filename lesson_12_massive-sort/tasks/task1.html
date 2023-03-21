@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 1-4</title>
+	<script>
+
+		// Задачі 1 - 4
+		/* 
+		30 елементів забагато для виводу в html кожного стану масиву з задачі №4 тож зробив на вибір кількість елементів.
+		Розумію що в реальних проектах є задача то робимо по задачі, тут чисто щоб візуально було все зрозуміло зробив.
+		*/
+		const arrLength = parseInt(prompt('Введіть кількість елементів масиву (Рекомендую 5-10 щоб тексту не було багато в результаті)', '5'))
+		// Дано масив 30 випадкових цілих чисел.
+		let arrayNumbers = geyArrayNumbers(arrLength, generateRandomNum, -50, 50)
+
+		// Функція генерування випадкового числа між min та max
+		function generateRandomNum(minNum, maxNum) {
+			return 1 + Math.floor(Math.random() * (maxNum - minNum) + minNum)
+		}
+		// Функція яка повертає масив заповнений випадковими числами
+		function geyArrayNumbers(quantityRepeat, randomNum, minNum, maxNum) {
+			let tempArr = []
+			for (let i = 0; i < quantityRepeat; i++)
+				tempArr.push(randomNum(minNum, maxNum))
+			return tempArr
+		}
+
+		/* 
+		* Так як обмінів в усіх методах сортування однакова кількість стало цікаво скільки проходів по масиву робить кожен метод, тож вказав спеціально counters в інших місцях
+		*/
+
+		const sortArrayBubble = [...arrayNumbers]
+		const [counterBubbleSort, stepSortArrBubble] = bubbleSort(sortArrayBubble)
+
+		const sortArrayMix = [...arrayNumbers]
+		const [counterMixSort, stepSortArrMix] = mixSort(sortArrayMix)
+
+		const sortArrayInclusion = [...arrayNumbers]
+		const [counterInclusionSort, stepSortArrInclusion] = inclusionSort(sortArrayInclusion)
+
+		// Функція сортування бульбашкою
+		function bubbleSort(arr) {
+			let counterBubbleSort = 0 // лічильник операцій заміни
+			let stepSortArrBubble = `[ ${arr.join(', ')} ] - Початковий стан масиву<br>` // рядок з кроками сортування та його ініціалізація з початковим станом масиву
+
+			for (let i = 0; i < arr.length; i++) { // ітерація по всіх елементах масиву
+				for (let j = 0; j < arr.length - i; j++) { // ітерація по всіх елементах масиву від початку до (кількість елементів масиву - 1) - i
+					if (arr[j] > arr[j + 1]) { // перевірка чи поточний елемент більший за наступний
+						[arr[j], arr[j + 1]] = [arr[j + 1], arr[j]] // заміна елементів місцями
+						stepSortArrBubble += `[ ${arr.join(', ')} ] - Міняємо місцями ${arr[j]} та ${arr[j + 1]}<br>` // додавання рядка з поточним станом масиву до рядка з кроками сортування
+					}
+					counterBubbleSort++ // збільшення лічильника операцій заміни
+				}
+			}
+			return [counterBubbleSort, stepSortArrBubble] // повернення масиву з кількістю операцій заміни та рядком з кроками сортування
+		}
+
+		// Функція сортування змінуванням
+		function mixSort(arr) {
+			let leftIndex = 0, // Ініціалізація лівої межі масиву
+				rightIndex = arr.length - 1, // Ініціалізація правої межі масиву
+				stepSortArrMix = `[ ${arr.join(', ')} ] - Початковий стан масиву<br>`; // Початковий стан масиву
+			let counterMixSort = 0; // Лічильник порівнянь елементів масиву
+
+			// Цикл виконується, поки ліва межа не дорівнює правій
+			while (leftIndex < rightIndex) {
+				// Цикл сортування зліва направо
+				for (let i = leftIndex; i < rightIndex; i++) {
+					if (arr[i] > arr[i + 1]) { // Порівняння елементів масиву
+						[arr[i], arr[i + 1]] = [arr[i + 1], arr[i]] // Обмін значень елементів масиву
+						stepSortArrMix += `[ ${arr.join(', ')} ] - міняємо місцями ${arr[i]} та ${arr[i + 1]} (цикл => 1)<br>` // Додавання поточного стану масиву до рядка stepSortArrMix
+					}
+					counterMixSort++ // Збільшення лічильника порівнянь елементів масиву
+				}
+				rightIndex-- // Зменшення правої межі масиву
+
+				// Цикл сортування зправа наліво
+				for (let i = rightIndex; i > leftIndex; i--) {
+					if (arr[i] < arr[i - 1]) { // Порівняння елементів масиву
+						[arr[i], arr[i - 1]] = [arr[i - 1], arr[i]] // Обмін значень елементів масиву
+						stepSortArrMix += `[ ${arr.join(', ')} ] - міняємо місцями ${arr[i]} та ${arr[i - 1]} (Цикл <= 2)<br>` // Додавання поточного стану масиву до рядка stepSortArrMix
+					}
+					counterMixSort++ // Збільшення лічильника порівнянь елементів масиву
+				}
+				leftIndex++ // Збільшення лівої межі масиву
+			}
+			// Повернення масиву, що містить значення лічильника та рядок зі станами масиву
+			return [counterMixSort, stepSortArrMix]
+		}
+
+		// Функція сортування масиву методом включення
+		function inclusionSort(arr) {
+			let curr, i, counterInclusionSort = 0, stepSortArrInclusion = `[ ${arr.join(', ')} ] - Початковий стан масиву<br>` // оголошення змінних для зберігання ключа, індексу, лічильника операцій заміни та рядок зі станом масиву
+
+			for (let k = 1; k < arr.length; k++) {
+				curr = arr[k] // зберігання поточного елемента в змінній curr
+				i = k - 1 // встановлення значення змінної i на попередній індекс
+
+				// перебір у зворотньому напрямку всіх елементів перед поточним
+				// доки їх значення більше за значення поточного елемента curr
+				while (i >= 0 && arr[i] > curr) {
+					arr[i + 1] = arr[i] // зсув поточного елемента на наступний індекс
+					i = i - 1 // зменшення значення змінної i на 1
+					counterInclusionSort++ // збільшення лічильника операцій заміни
+					stepSortArrInclusion += `[ ${arr.join(', ')} ] - Зсуваємо елемент ${arr[i + 1]} - шукаємо куди вставити ${curr}<br>`
+				}
+
+				arr[i + 1] = curr // вставлення поточного елемента на наступний індекс
+				stepSortArrInclusion += `[ ${arr.join(', ')} ] - Вставлення поточного елементу ${curr} після ${arr[i]}<br>`
+				counterInclusionSort++
+			}
+			// повернення кількості операцій заміни та рядок зі станами масиву
+			return [counterInclusionSort, stepSortArrInclusion]
+		}
+
+
+		//========================================================================================================================================================
+
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>
+						Задача.
+						Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування бульбашкою, змішуванням, включенням
+				</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Відсортований масив [ ${sortArrayBubble.join(', ')} ]
+					</td>
+					<td style="font-size: 16px; line-height: 20px;">
+						Кількість ітерацій сортування "Бульташкою" ${counterBubbleSort}<br>
+						Кожен шаг зміни масиву:<br> ${stepSortArrBubble}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Відсортований масив [ ${sortArrayMix.join(', ')} ]
+					</td>
+					<td style="font-size: 16px; line-height: 20px;">
+						Кількість ітерацій сортування "Змішуванням" ${counterMixSort}<br>
+						Кожен шаг зміни масиву:<br> ${stepSortArrMix}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Відсортований масив [ ${sortArrayInclusion.join(', ')} ]
+					</td>
+					<td style="font-size: 16px; line-height: 20px;">
+						Кількість ітерацій сортування "Включеням" ${counterInclusionSort}<br>
+						Кожен шаг зміни масиву:<br> ${stepSortArrInclusion}
+					</td>
+				</tr>
+			</table>
+		`)
+
+		// Функція повернення пори року
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

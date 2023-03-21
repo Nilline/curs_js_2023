@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 5-6</title>
+	<script>
+
+		// Задача 5
+
+		// Масив імен для сортування
+		const arrNames = [
+			'Daryna',
+			'Sofia',
+			'Denys',
+			'Yevheniia',
+			'Bohdan',
+			'Ivan',
+			'Iryna',
+			'Kyrylo',
+			'Kateryna',
+			'Larysa',
+			'Oksana',
+			'Maria',
+			'Maksym',
+			'Mykhailo',
+			'Nataliia',
+			'Olena',
+			'Pavlo',
+			'Tetiana',
+			'Olga',
+			'Anastasiia'
+		]
+
+		// Елемент, який необхідно знайти
+		const searchElementName = 'Olga'
+
+		// Елемент з довжиною рядка який потрібно знайди
+		const searchLengthElement = 5
+
+		// Функція обьєднання пошукових функцій для зручності (можна було не створювати, просто було цікаво зробити такий підхід)
+		function binarySearch(methodSearch, arr, valueSearch) {
+			if (methodSearch === 'findIndex')
+				return findIndexbinarySearchForName(arr, valueSearch)
+			else if (methodSearch === 'findIndexForStrokeLength')
+				return findIndexbinarySearchForStrokeLength(arr, valueSearch)
+
+			// Функція для знаходження індексу елемента методом бінарного пошуку
+			function findIndexbinarySearchForName(arr, valueSearch) {
+				// Сортування масиву імен
+				arr.sort()
+				let startIndex = 0, // Індекс початкового елемента
+					lastIndex = arr.length - 1 // Індекс останнього елемента
+				while (startIndex <= lastIndex) {
+					const middleIndex = Math.floor((startIndex + lastIndex) / 2) // Індекс середнього елемента
+					if (arr[middleIndex] === valueSearch) return middleIndex // Якщо елемент знайдений, повертаємо його індекс
+					if (arr[middleIndex] < valueSearch) // Якщо елемент менший за той який шукаємо, змінюємо початковий індекс
+						startIndex = middleIndex + 1
+					else // Якщо елемент більший за той який шукаємо, змінюємо останній індекс
+						lastIndex = middleIndex - 1
+				}
+				return -1 // Якщо елемент не знайдено, повертаємо -1
+			}
+
+			// Функція для знаходження індексу елемента методом бінарного пошуку за довжиною рядка
+			function findIndexbinarySearchForStrokeLength(arr, valueSearch) {
+				// Сортування масиву імен за довжиною рядка
+				arr.sort((el1, el2) => {
+					if (el1.length > el2.length) return 1
+					if (el1.length < el2.length) return -1
+					return 0
+				})
+				let startIndex = 0, // Індекс початкового елемента
+					lastIndex = arr.length - 1 // Індекс останнього елемента
+				while (startIndex <= lastIndex) {
+					const middleIndex = Math.floor((startIndex + lastIndex) / 2) // Індекс середнього елемента
+					if (arr[middleIndex].length === valueSearch) return middleIndex // Якщо елемент знайдений, повертаємо його індекс
+					if (arr[middleIndex].length < valueSearch) // Якщо елемент менший за той який шукаємо, змінюємо початковий індекс
+						startIndex = middleIndex + 1
+					else // Якщо елемент більший за той який шукаємо, змінюємо останній індекс
+						lastIndex = middleIndex - 1
+				}
+				return -1 // Якщо елемент не знайдено, повертаємо -1
+			}
+
+		}
+
+
+		// Знаходження індексу шуканого елемента за допомогою функції бінарного пошуку
+		const findIndexElementInArrayForName = binarySearch('findIndex', arrNames, searchElementName)
+
+		// Знаходження індексу шуканого елемента за допомогою функції бінарного пошуку
+		const findIndexElementInArrayForStrokeLength = binarySearch('findIndexForStrokeLength', arrNames, searchLengthElement)
+
+		//========================================================================================================================================================
+
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>
+						#5 Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я «Olga» і під яким індексом.<br><br>
+						#6 Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я довжиною 5 символів і під яким індексом.
+				</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						${arrNames.join(', ')}
+					</td>
+					<td>
+						Ім'я для покушу в масиві '${searchElementName} <br> Довжина для покушу в масиві '${searchLengthElement}'
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Результат задачі №5
+					</td>
+					<td>
+						${findIndexElementInArrayForName >= 0 ? "Ім'я " + searchElementName + " знаходиться в масиві за індексом " + findIndexElementInArrayForName : "Ім'я " + searchElementName + " в масиві немає"}
+					</td >
+				</tr >
+				<tr>
+					<td>
+						Результат задачі №6
+					</td>
+					<td>
+						${findIndexElementInArrayForName >= 0 ? "Ім'я з довжиною " + searchLengthElement + " знаходиться в масиві за індексом " + findIndexElementInArrayForStrokeLength : "Ім'я з довжиною " + searchLengthElement + " в масиві немає"}
+					</td >
+				</tr >
+			</table >
+		`)
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
