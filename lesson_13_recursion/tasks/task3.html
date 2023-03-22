@@ -26,9 +26,7 @@
 		// Функція, яка генерує задану кількість чисел місяців та додає їх у переданий масив
 		function getMonthNumbersAndPushArr(numMonth, arr) {
 			// Цикл, який запускається задану кількість разів та додає результати виклику функції-ітератора до масиву
-			for (let i = 0; i < numMonth; i++) {
-				arr.push(monthIterator())
-			}
+			for (let i = 0; i < numMonth; i++) arr.push(monthIterator())
 		}
 
 		// Генерація 24 чисел місяців та їх додавання до масиву
