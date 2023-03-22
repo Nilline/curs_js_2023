@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 3</title>
+	<script>
+
+		const word = [106, 97, 118, 97, 115, 99, 114, 105, 112, 116] // Загадане слово закодоване в ascii код (не мухлювати) - зроблено для навчальних цілей так як погано розумів цю тему
+
+		const description = "Що ми вчимо?" // Опис загаданого слова
+
+		// Оголошуємо функцію-ітератор, яка генерує букви заданого слова по одній
+		const iteratorFunc = (word) => {
+			let currentIndex = -1 // Початковий індекс дорівнює -1
+			return () => {
+				currentIndex++ // Збільшуємо індекс на 1
+				if (currentIndex < word.length) // Якщо індекс не виходить за межі довжини слова
+					return String.fromCharCode(word[currentIndex]) // Повертаємо букву з потрібним індексом переводячи з таблиці ascii в букву
+			}
+		}
+
+		// Створення ітератора для заданого слова
+		const letterIterator = iteratorFunc(word)
+
+		// Функція гри, яка приймає слово та його опис
+		function game(word, description) {
+			let counterIterator = 0, correctAnswers = 0
+			while (counterIterator < word.length) { // Запускаємо цикл, який працює, поки не будуть задані всі літери слова
+				const userAnswer = prompt(`Введіть ${counterIterator + 1} літеру слова під описом (${description}): `).toLowerCase() // Пропозиція користувачеві ввести чергову літеру (привожу до нижнього регістру для точності)
+				if (userAnswer === letterIterator()) correctAnswers++ // Порівнюємо букву користувача та букву з ітератора. Якщо вони збігаються, збільшуємо лічильник вгаданих букв
+				word[counterIterator] = String.fromCharCode(word[counterIterator]) // заміняємо значення коду ascii в масиві на літеру
+				counterIterator++ // Збільшуємо лічильник заданих букв
+			}
+			return [correctAnswers, counterIterator] // Повертаємо масив з кількості вгаданих літер та загальної кількості літер
+		}
+
+		// Викликаємо функцію гри зі словом та його описом та зберігаємо результати у змінні
+		const [correctAnswers, counterIterator] = game(word, description)
+
+		//========================================================================================================================================================
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>
+						Задача.
+						З використанням замикань розробити ітератор, тобто функцію, що буде поступово за окремими викликами видавати по одну букву наперед заданого слова. З використанням
+					нього розробити гру «Прекладач». Виводимо для користувача опис цього слова і по одну букву користувач вводить переклад цього слова. Підрахувати кількість вгаданих
+					букв.
+				</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Опис загаданого слова
+					</td>
+					<td>
+						${description}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Слово
+					</td>
+					<td>
+						${word.join('')}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Кількість ітерацій 
+					</td>
+					<td>
+						${counterIterator}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Кількість вгаданих букв 
+					</td>
+					<td>
+						${correctAnswers}
+					</td>
+				</tr>
+			</table>
+		`)
+
+		// Функція повернення пори року
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

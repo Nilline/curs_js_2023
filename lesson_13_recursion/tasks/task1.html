@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 1</title>
+	<script>
+
+		const x = 10
+
+		//========================================================================================================================================================
+
+		// Функція, яка розв'язує задачу із застосуванням циклу for
+		function getTaskSolution(x) {
+			if (x === 0) return 1 // Якщо передане число x дорівнює нулю, то повертаємо 1
+
+			// Створюємо змінну res та обчислюємо значення згідно умови
+			let res = 1
+			for (let i = 1; i <= x; i++)
+				res += + 2 * i
+
+			return res // Повертаємо результат
+		}
+
+		// Рекурсивна функція, яка розв'язує задачу
+		function getTaskSolutionRecursion(x, i = 1, res = 1) {
+			if (x === 0) return 1
+
+			if (i <= x) { // Поки i не перевищить x виконувати обчислення значення згідно умови і збільшувати лічильник i на 1
+				res += + 2 * i
+				return getTaskSolutionRecursion(x, i + 1, res)
+			}
+
+			return res // Повертаємо результат
+		}
+
+		// Обчислення значення для функції з циклом for
+		const resTaskSolution = getTaskSolution(x)
+
+		// Обчислення значення для рекурсивної функції
+		const resTaskSolutionRecursion = getTaskSolutionRecursion(x)
+
+		//========================================================================================================================================================
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>
+						Задача.
+						Нехай x(0) = 1, x(i) = x(i-1) + 2i, де i = 1,2,.... Визначити x(10). Розв’язати з використанням рекурсивних і нерекурсивних алгоритмів
+				</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Звичайний цикл: x(${x})
+					</td>
+					<td>
+						${resTaskSolution}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Рекурсія: x(${x})
+					</td>
+					<td>
+						${resTaskSolutionRecursion}
+					</td>
+				</tr>
+			</table>
+		`)
+
+		// Функція повернення пори року
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

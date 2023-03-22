@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 5</title>
+	<script>
+
+		// Функція генерації випадкового числа між min та max
+		const generateRandomNum = (minNum, maxNum) => Math.floor(Math.random() * (maxNum - minNum + 1) + minNum)
+
+		// Функція, яка створює запитання для додавання двох випадкових чисел через певний проміжок часу
+		function additionQuestionInterval(delay, randomNum) {
+			// Встановлення затримки на виконання функції
+			setTimeout(() => {
+				const numOne = randomNum(1, 10), numSecond = randomNum(1, 10) // Генерація двох випадкових чисел за допомогою переданої функції
+				const sum = numOne + numSecond // Обчислення правильної суми двох випадкових чисел
+				const userQuestion = parseInt(prompt(`Скільки буде ${numOne} + ${numSecond} =`, '0')) // Запитання для користувача: скільки буде сума двох чисел?
+				if (sum === userQuestion) // Перевірка правильності введеної користувачем відповіді
+					alert(`Правильно, ${numOne} + ${numSecond} = ${sum}`)
+				else
+					alert(`Не вірно, ${numOne} + ${numSecond} = ${sum}`)
+				additionQuestionInterval(delay, randomNum) // Рекурсивний виклик функції після закінчення запиту із заданою затримкою
+			}, delay);
+		}
+
+		// Запуск функції з запитаннями щодо додавання двох чисел із заданою затримкою
+		additionQuestionInterval(10000, generateRandomNum)
+		//========================================================================================================================================================
+
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>
+						#5 Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і робиться перевірка.
+					</td>
+				</tr>
+			</table >
+		`)
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

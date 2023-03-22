@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 2</title>
+	<script>
+
+		const n = parseInt(prompt('Введіть n:', 1))
+
+		//========================================================================================================================================================
+
+		function getTaskSolution(n) {
+			// Якщо n дорівнює 0 або 1, то повертаємо 1
+			if (n === 0 || n === 1) return 1
+			// Ініціалізуємо змінні з початковими значеннями
+			let x0 = 1, x1 = 1, xn = 1
+			// Обчислюємо xn за формулою ітераційного методу
+			for (let i = 2; i <= n; i++) {
+				xn = x0 + 2 * x1
+				x1 = x0
+				x0 = xn
+			}
+			return xn // Повертаємо останній елемент послідовності
+		}
+
+		function getTaskSolutionRecursion(n) {
+			// Якщо n дорівнює 0 або 1, то повертаємо 1
+			if (n === 0 || n === 1) return 1
+
+			// Рекурсивно обчислюємо n число за допомогою рекурсії
+			return getTaskSolutionRecursion(n - 1) + 2 * getTaskSolutionRecursion(n - 2)
+		}
+
+		const resTaskSolution = getTaskSolution(n) // Запускаємо функцію для знаходження n числа за формулою ітераційного методу
+		const resTaskSolutionRecursion = getTaskSolutionRecursion(n) // Запускаємо функцію для знаходження n числа за допомогою рекурсії
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>
+						Задача.
+						Нехай x(0) = x(1) = 1, x(i) = x(i-1) + 2x(i-2), де i = 1,2,.... Визначити x(n). Розв’язати з використанням рекурсивних і нерекурсивних алгоритмів
+				</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Звичайний цикл: x(${n})
+					</td>
+					<td>
+						${resTaskSolution}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Рекурсія: x(${n})
+					</td>
+					<td>
+						${resTaskSolutionRecursion}
+					</td>
+				</tr>
+			</table>
+		`)
+
+		// Функція повернення пори року
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
