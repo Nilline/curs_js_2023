@@ -24,13 +24,13 @@
 		numbersMonth = []
 
 		// Функція, яка генерує задану кількість чисел місяців та додає їх у переданий масив
-		function getMonthNumbersAndPushArr(numMonth, arr) {
+		function getMonthNumbersAndPushArr(numMonth, iterator, arr) {
 			// Цикл, який запускається задану кількість разів та додає результати виклику функції-ітератора до масиву
-			for (let i = 0; i < numMonth; i++) arr.push(monthIterator())
+			for (let i = 0; i < numMonth; i++) arr.push(iterator())
 		}
 
 		// Генерація 24 чисел місяців та їх додавання до масиву
-		getMonthNumbersAndPushArr(24, numbersMonth)
+		getMonthNumbersAndPushArr(24, monthIterator, numbersMonth)
 
 		//========================================================================================================================================================
 
