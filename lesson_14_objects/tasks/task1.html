@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>task 1</title>
+	<script>
+
+		//===Описи=====================================================================================================================================================
+
+		// Створюємо масив обьектів з компаніями
+		const arrObjCompanySite = [
+			{
+				name: 'Revelion',
+				owner: 'Mike',
+				sponsors: [
+					{
+						surname: 'Jonson',
+						name: 'Richard',
+						sumInvestments: '235156'
+					},
+					{
+						surname: 'Smith',
+						name: 'John',
+						sumInvestments: '129551.52'
+					},
+				],
+				yearIssue: 2005,
+				price: 442194
+			},
+			{
+				name: 'Keems',
+				owner: 'John',
+				sponsors: [
+					{
+						surname: 'Green',
+						name: 'Sandra',
+						sumInvestments: 25156
+					},
+					{
+						surname: 'Williams',
+						name: 'Andrea',
+						sumInvestments: 12551
+					},
+				],
+				yearIssue: 2012,
+				price: 129112
+			},
+			{
+				name: 'Lian',
+				owner: 'Mike',
+				sponsors: [
+					{
+						surname: 'Martin',
+						name: 'Frankie',
+						sumInvestments: 51951
+					},
+					{
+						surname: 'Harris',
+						name: 'Brett ',
+						sumInvestments: 32156
+					},
+				],
+				yearIssue: 2008,
+				price: '188512'
+			},
+			{
+				name: 'Garden',
+				owner: 'Ashton',
+				sponsors: [
+					{
+						surname: 'Lopez',
+						name: 'Evan',
+						sumInvestments: 1241
+					},
+					{
+						surname: 'Taylor',
+						name: 'Emerson  ',
+						sumInvestments: 4455
+					},
+				],
+				yearIssue: 2022,
+				price: 8517
+			}
+		]
+
+		//========================================================================================================================================================
+
+		// Загальна вартість усіх сайтів
+		const totalCostSites = arrObjCompanySite.reduce((prevPrice, site) => prevPrice + parseFloat(site.price), 0)
+
+		// Кількість сайтів, що було зроблено між 2000 та 2009 рр.
+		const totalSitesBetweenYears = arrObjCompanySite.reduce((prevValue, site) => site.yearIssue > 2000 && site.yearIssue < 2009 ? ++prevValue : prevValue, 0)
+
+		// Кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+		const totalSitesSponsorsInvestmentsMore100000 = arrObjCompanySite.reduce((prevCounter, site) => {
+			const sumInvestments = site.sponsors.reduce((prevSum, sponsor) => prevSum + parseFloat(sponsor.sumInvestments), 0)
+			if (sumInvestments > 100000)
+				return ++prevCounter
+			else
+				return prevCounter
+		}, 0)
+
+		// Загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+		const sponsorsList = getSponsorsList(arrObjCompanySite)
+
+		// 5) знайти рік, коли прибуток був найбільшим
+		const biggestProfitSiteYear = arrObjCompanySite.reduce((prevSite, site) => site.price > prevSite.price ? site : prevSite)
+
+		// 6) упорядкувати список за спаданням прибутку
+		arrObjCompanySite.sort((a, b) => b.price - a.price)
+
+		// 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+		const newArrSitesListPriceLess10000 = JSON.parse(JSON.stringify(arrObjCompanySite.filter(site => site.price < 10000)))
+		const newArrSitesListPriceMore10000 = JSON.parse(JSON.stringify(arrObjCompanySite.filter(site => site.price > 10000)))
+
+		function getSponsorsList(arrSites) {
+			const tempArr = []
+			for (const site of arrSites)
+				for (const sponsor of site.sponsors)
+					tempArr.push(`${sponsor.name} ${sponsor.surname}`)
+			return tempArr
+		}
+
+		//========================================================================================================================================================
+
+		// Виводимо в HTML задачу та результат
+		document.write(`
+			<table>
+				<tr>
+					<td>
+						Задача.
+						Описати масив об’єктів – сайтів розроблених компанією з такими властивостями <br>
+					----- Властивості ------ <br>
+					назва компанії на час розробки (назву періодично змінюють) <br>
+					власник компанії <br>
+					споснсори (масив спонсорів) <br>
+					---* прізвище спонсора <br>
+					---* ім’я спонсора <br>
+					---* сума вкладень спонсора <br>
+					рік випуску <br>
+					вартість сайту <br>
+					Знайти: <br>
+					1) загальну вартість усіх сайтів <br>
+					2) кількість сайтів, що було зроблено між 2000 та 2009 рр. <br>
+					3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000 <br>
+					4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив) <br>
+					5) знайти рік, коли прибуток був найбільшим <br>
+					6) упорядкувати список за спаданням прибутку <br>
+					7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000 <br>
+				</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Загальна вартість усіх сайтів
+					</td>
+					<td>
+						${totalCostSites}$
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Кількість сайтів, що було зроблено між 2000 та 2009 рр.
+					</td>
+					<td>
+						${totalSitesBetweenYears}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+					</td>
+					<td>
+						${totalSitesSponsorsInvestmentsMore100000}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Загальний список усіх спонсорів
+					</td>
+					<td>
+						${sponsorsList.join(', ')}
+					</td>
+				</tr>
+				<tr>
+				<tr>
+					<td>
+						Рік, коли прибуток був найбільшим
+					</td>
+					<td>
+						Найбільший прибуток в сумі ${biggestProfitSiteYear.price}$ був у ${biggestProfitSiteYear.yearIssue} році. <br> Це сайт компанії ${biggestProfitSiteYear.name}, власник сайту ${biggestProfitSiteYear.owner}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Масив з копіями об’єктів, що містять сайти з вартість до 10000 (Перелік цін сайтів)
+					</td>
+					<td>
+						${newArrSitesListPriceLess10000[0].price}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Масив з копіями об’єктів, що містять сайти з вартість більше 10000 (Перелік цін сайтів)
+					</td>
+					<td>
+						${newArrSitesListPriceMore10000[0].price} <br> ${newArrSitesListPriceMore10000[1].price} <br> ${newArrSitesListPriceMore10000[2].price}
+					</td>
+				</tr>
+			</table>
+		`)
+
+		// Функція повернення пори року
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
